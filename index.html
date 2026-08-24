@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>매출연구소 — 청주 소상공인 온라인 마케팅 | 크레소(CRESSO) 운영</title>
+<meta name="description" content="매출연구소는 크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스입니다. 네이버 플레이스 관리, 인플루언서 릴스 제작, 블로그 체험단 운영을 맡습니다.">
+<meta name="theme-color" content="#101c33">
+<link rel="icon" href="logo-mark.png">
+<link rel="apple-touch-icon" href="logo-mark.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="매출연구소">
+<meta property="og:title" content="매출연구소 — 청주 소상공인 온라인 마케팅 | 크레소(CRESSO) 운영">
+<meta property="og:description" content="매출연구소는 크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스입니다.">
+<meta property="og:image" content="logo-mark.png">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+
+<style>
+/* ── 디자인 토큰 (Claude Design 시안 값 그대로) ────────────── */
+:root{
+  --ink:#101c33; --ink-btn:#14243d; --gold:#c2a25c;
+  --bg:#f7f9fc; --panel:#e9edf4;
+  --text:#101c33; --text-mid:#2e3d55; --text-meta:#4a5a75;
+  --on-dark:#f7f9fc; --on-dark-mid:#dce4f0; --on-dark-low:#b7c3d6;
+  --btn-fg:#f7f5f0;
+  --line:rgba(22,24,28,.18); --line-16:rgba(22,24,28,.16); --line-soft:rgba(22,24,28,.14);
+  --line-dark:rgba(251,251,252,.28); --line-dark-soft:rgba(251,251,252,.22);
+  --font-body:Pretendard,'Gothic A1',sans-serif;
+  --font-display:'Gothic A1',Pretendard,sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}
+a:hover{color:#3b5c93}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+.page{padding-bottom:96px}
+.container{max-width:1080px;margin:0 auto}
+.stack{display:flex;flex-direction:column}
+.gap-14{gap:14px}.gap-16{gap:16px}.gap-18{gap:18px}
+
+.section{padding:36px 20px;border-top:1px solid var(--line-16)}
+.section--lg{padding:40px 20px}
+.section--light{background:var(--bg)}
+.section--panel{background:var(--panel)}
+.section--dark{background:var(--ink)}
+.section--anchor{scroll-margin-top:72px}
+
+/* ── 타이포 ────────────────────────────────────────────────── */
+.h1{margin:0;font:900 clamp(33px,4.6vw,52px)/1.24 var(--font-display);letter-spacing:-.035em;text-wrap:pretty}
+.h2{margin:0;font:900 clamp(26px,3.4vw,38px)/1.3 var(--font-display);letter-spacing:-.03em;text-wrap:pretty}
+.h2--md{font-size:clamp(27px,3.6vw,40px)}
+.h3{margin:0;font:800 clamp(20px,2.1vw,23px)/1.35 var(--font-display);letter-spacing:-.025em;text-wrap:pretty}
+.lead{margin:0;font:400 clamp(18px,1.6vw,21px)/1.55 var(--font-body);color:var(--text-mid);letter-spacing:-.015em;text-wrap:pretty}
+.body{margin:0;font:400 17px/1.6 var(--font-body);color:var(--text-mid);letter-spacing:-.015em;text-wrap:pretty}
+.body--15{line-height:1.5}
+.section-label{font:500 13px/1 var(--font-mono);color:var(--text-meta);letter-spacing:.06em}
+.section-label--gold{color:var(--gold)}
+.marker{background:linear-gradient(transparent 58%,rgba(194,162,92,.38) 58%)}
+.marker--dark{background:linear-gradient(transparent 58%,rgba(194,162,92,.42) 58%);color:var(--on-dark)}
+
+/* ── 버튼 ──────────────────────────────────────────────────── */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:58px;
+  background:var(--ink-btn);border:2px solid var(--ink-btn);border-radius:4px;
+  box-shadow:3px 3px 0 var(--gold);font:900 20px/1 var(--font-display);color:var(--btn-fg);
+  letter-spacing:-.02em;text-decoration:none;cursor:pointer;
+  transition:box-shadow .12s ease,transform .12s ease}
+.btn:hover,.btn:focus-visible{color:var(--btn-fg);box-shadow:1px 1px 0 var(--gold);transform:translate(2px,2px)}
+.btn--ghost{background:transparent;border-color:var(--ink);color:var(--ink);box-shadow:none;height:52px;font-size:18px}
+.btn--ghost:hover,.btn--ghost:focus-visible{background:var(--ink);color:var(--btn-fg);box-shadow:none;transform:none}
+
+/* ── 격자 ──────────────────────────────────────────────────── */
+.grid-320{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;align-items:start}
+.grid-300{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-items:start}
+.grid-180{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.grid-260{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px 24px}
+
+/* ── 헤더 ──────────────────────────────────────────────────── */
+.site-header{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;padding:0 20px;background:var(--ink);z-index:50}
+.site-header__brand{display:flex;align-items:center;gap:9px;text-decoration:none}
+.site-header__logo{height:30px;width:auto;display:block;flex:none}
+.site-header__name{font:900 19px/1 var(--font-display);color:var(--on-dark);letter-spacing:-.03em}
+.site-header__tel{position:relative;display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;
+  border:1px solid rgba(251,251,252,.4);border-radius:999px;text-decoration:none;flex:none}
+.site-header__tel::after{content:'';position:absolute;inset:-7px -6px}
+.site-header__tel:hover .site-header__telnum{color:var(--gold)}
+.site-header__dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+.site-header__telnum{font:700 16px/1 var(--font-body);color:var(--on-dark);letter-spacing:-.01em;white-space:nowrap}
+
+/* ── 히어로 ────────────────────────────────────────────────── */
+.hero{padding:84px 20px 36px;background:var(--bg)}
+.hero__eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.hero__eyebrow-bar{width:14px;height:3px;background:var(--gold);flex:none}
+.hero__eyebrow-text{font:500 14px/1 var(--font-mono);color:var(--text-meta);letter-spacing:.02em}
+.hero__sub{margin:14px 0 0}
+.hero__cta{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.hero__assure{margin-top:11px;text-align:center;font:500 17px/1.4 var(--font-body);color:var(--text-mid);letter-spacing:-.015em}
+.hero__figure{min-height:200px;display:flex;align-items:flex-end;padding:9px;
+  border:1px solid var(--line-16);
+  background:repeating-linear-gradient(135deg,#dde3ec 0 7px,#d2dae6 7px 14px)}
+.hero__figure span{font:500 12px/1.35 var(--font-mono);color:var(--text-meta);background:var(--bg);
+  padding:5px 7px;border:1px solid var(--line-16);word-break:keep-all;white-space:nowrap}
+
+/* ── 운영사 확인 ───────────────────────────────────────────── */
+.operator{border:2px solid var(--ink);background:var(--bg);padding:20px}
+.operator__line{margin:0;font:800 clamp(19px,2.2vw,24px)/1.5 var(--font-display);letter-spacing:-.025em;text-wrap:pretty}
+.operator__table{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:14px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 24px}
+.operator__row{display:flex;gap:10px;align-items:baseline;
+  border-bottom:1px solid var(--line-soft);padding-bottom:8px}
+.operator__key{flex:none;width:118px;font:500 16px/1.5 var(--font-mono);color:var(--text-meta)}
+.operator__val{font:500 17px/1.5 var(--font-body);color:var(--text);letter-spacing:-.015em;word-break:keep-all}
+
+/* ── 체크리스트 ────────────────────────────────────────────── */
+.checklist{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--bg)}
+.checklist__item{display:flex;gap:14px;align-items:flex-start;padding:16px;border-bottom:1px solid var(--line-soft)}
+.checklist__item:last-child{border-bottom:none}
+.checklist__box{flex:none;width:26px;height:26px;border:2px solid var(--ink);background:var(--bg)}
+.checklist__text{margin:0;font:500 clamp(17px,1.5vw,19px)/1.5 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
+.callout-gold{border-left:4px solid var(--gold);padding:4px 0 4px 14px;display:flex;flex-direction:column;gap:4px}
+.callout-gold__title{margin:0;font:800 clamp(19px,2vw,23px)/1.45 var(--font-display);letter-spacing:-.02em}
+
+/* ── 서비스 카드 ───────────────────────────────────────────── */
+.service-card{border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px}
+.service-card__list{display:flex;flex-direction:column;gap:7px}
+
+/* ── 리뷰 가이드 (다크) ────────────────────────────────────── */
+.review__title{color:var(--on-dark)}
+.review__lead{margin:0;font:500 clamp(18px,1.7vw,21px)/1.6 var(--font-body);color:var(--on-dark-mid);letter-spacing:-.015em;text-wrap:pretty}
+.review__step{border:1px solid var(--line-dark);padding:14px;display:flex;flex-direction:column;gap:8px}
+.review__step-no{font:500 14px/1 var(--font-mono);color:var(--gold)}
+.review__step-text{margin:0;font:700 17px/1.5 var(--font-body);color:var(--on-dark);letter-spacing:-.015em}
+.review__rules{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.review__rule{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--line-dark-soft);padding-top:12px}
+.review__rule-dot{flex:none;width:8px;height:8px;margin-top:8px;background:var(--gold)}
+.review__rule-text{margin:0;font:400 17px/1.6 var(--font-body);color:var(--on-dark-mid);letter-spacing:-.015em;text-wrap:pretty}
+
+/* ── 요금제 ────────────────────────────────────────────────── */
+.plan{border:1px solid var(--line);background:var(--bg);padding:20px;display:flex;flex-direction:column;gap:12px}
+.plan--featured{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--gold)}
+.plan__head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.plan__name{font:800 20px/1 var(--font-display);letter-spacing:-.02em}
+.plan__badge{font:700 14px/1 var(--font-mono);background:var(--gold);border:1px solid var(--ink-btn);padding:5px 7px}
+.plan__price-wrap{display:flex;flex-direction:column;gap:2px}
+.plan__price{font:900 clamp(26px,2.6vw,30px)/1.2 var(--font-display);letter-spacing:-.03em}
+.plan__note{font:500 17px/1.4 var(--font-body);color:var(--text-mid)}
+.plan__list{display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--line-soft);padding-top:12px}
+.plan__list p{margin:0;font:400 17px/1.5 var(--font-body);color:var(--text-mid)}
+.pricing-notes{border:1px solid var(--line);background:var(--bg);padding:14px 16px;display:flex;flex-direction:column;gap:5px}
+.pricing-notes p{margin:0;font:500 17px/1.55 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
+
+/* ── 문의 ──────────────────────────────────────────────────── */
+.contact-card{border:2px solid var(--ink);background:rgba(194,162,92,.16);padding:20px;display:flex;flex-direction:column;gap:14px}
+.contact-row{display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line-soft);padding-top:12px}
+.contact-row:first-of-type{border-top:none;padding-top:0}
+.contact-key{font:500 14px/1 var(--font-mono);color:var(--text-mid);letter-spacing:.04em}
+.contact-val{font:800 clamp(19px,2vw,22px)/1.4 var(--font-display);letter-spacing:-.02em;text-decoration:none;word-break:break-all}
+
+/* ── 푸터 ──────────────────────────────────────────────────── */
+.site-footer{padding:32px 20px 40px;background:var(--ink)}
+.site-footer__brand{font:900 19px/1.2 var(--font-display);color:var(--on-dark);letter-spacing:-.03em}
+.site-footer__desc{font:400 16px/1.5 var(--font-body);color:var(--on-dark-low)}
+.site-footer__grid{border-top:1px solid var(--line-dark-soft);padding-top:14px}
+.site-footer__item{font:400 16px/1.6 var(--font-body);color:var(--on-dark-low);word-break:keep-all}
+.site-footer__note{border-top:1px solid var(--line-dark-soft);padding-top:14px;
+  font:400 15px/1.6 var(--font-body);color:var(--on-dark-low)}
+
+/* ── 하단 고정 바 ──────────────────────────────────────────── */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;height:78px;background:var(--bg);
+  border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(22,24,28,.12);padding:12px 20px;z-index:50}
+.sticky-cta .btn{height:52px;font-size:19px;box-shadow:none}
+.sticky-cta .btn:hover,.sticky-cta .btn:focus-visible{box-shadow:none;transform:none;background:var(--ink)}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "매출연구소",
+  "legalName": "크레소(CRESSO)",
+  "alternateName": ["크레소", "CRESSO", "매출연구소"],
+  "description": "크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스",
+  "image": "logo-mark.png",
+  "telephone": "+82-10-2362-0437",
+  "email": "saleslabkr@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "KR",
+    "addressRegion": "충청북도",
+    "addressLocality": "청주시 상당구",
+    "streetAddress": "중고개로337번길 23"
+  },
+  "areaServed": { "@type": "City", "name": "청주시" }
+}
+</script>
+</head>
+
+<body>
+
+<!-- ================= 상단 고정 헤더 ================= -->
+<header class="site-header">
+  <a class="site-header__brand" href="#top">
+    <img class="site-header__logo" src="logo-mark.png" alt="">
+    <span class="site-header__name">매출연구소</span>
+  </a>
+  <a class="site-header__tel" href="tel:01023620437" aria-label="전화 걸기 010-2362-0437">
+    <span class="site-header__dot" aria-hidden="true"></span>
+    <span class="site-header__telnum">010-2362-0437</span>
+  </a>
+</header>
+
+<main class="page" id="top">
+
+  <!-- ================= 히어로 ================= -->
+  <section class="hero">
+    <div class="container grid-320">
+      <div class="stack">
+        <div class="hero__eyebrow">
+          <span class="hero__eyebrow-bar" aria-hidden="true"></span>
+          <span class="hero__eyebrow-text">청주 소상공인 온라인 진단</span>
+        </div>
+
+        <h1 class="h1">사장님도 아는데, <span class="marker">아직 그대로입니다</span></h1>
+
+        <p class="lead hero__sub">사진 3장, 몇 달째 틀린 영업시간. 손이 못 갔을 뿐입니다.</p>
+
+        <div class="hero__cta">
+          <a class="btn" href="tel:01023620437">전화로 무료 진단 문의</a>
+          <a class="btn btn--ghost" href="#contact">이메일로 문의하기</a>
+        </div>
+
+        <div class="hero__assure">비용 없음 · 계약 의무 없음 · 방문 없이 진행</div>
+      </div>
+
+      <div class="hero__figure">
+        <span>가게 사진 목록 — 3장에서 멈춤</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 운영사 확인 ================= -->
+  <section class="section section--panel section--anchor" id="operator">
+    <div class="container stack gap-16">
+      <span class="section-label">01 · 운영사</span>
+      <h2 class="h2">누가 운영하는 서비스인가</h2>
+
+      <div class="operator">
+        <p class="operator__line">
+          <strong>매출연구소</strong>는 <strong>크레소(CRESSO)</strong>가 운영하는
+          서비스 브랜드입니다.
+        </p>
+        <p class="body" style="margin-top:10px">
+          사업자등록증상의 상호는 <strong>크레소(CRESSO)</strong>이고,
+          청주 지역 소상공인을 대상으로 하는 온라인 마케팅 서비스를
+          <strong>매출연구소</strong>라는 이름으로 제공하고 있습니다.
+          두 이름은 같은 사업자를 가리킵니다.
+        </p>
+
+        <div class="operator__table">
+          <div class="operator__row">
+            <span class="operator__key">상호</span>
+            <span class="operator__val">크레소(CRESSO)</span>
+          </div>
+          <div class="operator__row">
+            <span class="operator__key">서비스명</span>
+            <span class="operator__val">매출연구소</span>
+          </div>
+          <div class="operator__row">
+            <span class="operator__key">대표자</span>
+            <span class="operator__val">심유신 외 1명</span>
+          </div>
+          <div class="operator__row">
+            <span class="operator__key">사업자등록번호</span>
+            <span class="operator__val">531-26-02313</span>
+          </div>
+          <div class="operator__row">
+            <span class="operator__key">주소</span>
+            <span class="operator__val">충청북도 청주시 상당구 중고개로337번길 23</span>
+          </div>
+          <div class="operator__row">
+            <span class="operator__key">전화</span>
+            <span class="operator__val"><a href="tel:01023620437">010-2362-0437</a></span>
+          </div>
+          <div class="operator__row">
+            <span class="operator__key">이메일</span>
+            <span class="operator__val"><a href="mailto:saleslabkr@gmail.com">saleslabkr@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 공감 ================= -->
+  <section class="section section--light">
+    <div class="container stack gap-16">
+      <span class="section-label">02 · 공감</span>
+      <h2 class="h2">알고는 계셨는데 못 고치신 것들</h2>
+
+      <div class="checklist">
+        <div class="checklist__item">
+          <span class="checklist__box" aria-hidden="true"></span>
+          <p class="checklist__text">영업시간이 바뀌었는데 아직 안 고쳤다</p>
+        </div>
+        <div class="checklist__item">
+          <span class="checklist__box" aria-hidden="true"></span>
+          <p class="checklist__text">사진을 더 올려야지 하고 몇 달째다</p>
+        </div>
+        <div class="checklist__item">
+          <span class="checklist__box" aria-hidden="true"></span>
+          <p class="checklist__text">리뷰 부탁을 해야 하는데 민망해서 못 한다</p>
+        </div>
+        <div class="checklist__item">
+          <span class="checklist__box" aria-hidden="true"></span>
+          <p class="checklist__text">새소식이 2년 전에 멈춰 있다</p>
+        </div>
+        <div class="checklist__item">
+          <span class="checklist__box" aria-hidden="true"></span>
+          <p class="checklist__text">답글을 달아야지 하면서 쌓여만 간다</p>
+        </div>
+      </div>
+
+      <div class="callout-gold">
+        <p class="callout-gold__title">몰라서가 아닙니다</p>
+        <p class="body">
+          오늘 장사가 먼저라 계속 뒤로 밀렸을 뿐입니다. 사장님 탓이 아니라,
+          일이 굴러가는 방식의 문제입니다. 무엇부터 손대야 하는지 순서를 정리해 드립니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 하는 일 ================= -->
+  <section class="section section--panel">
+    <div class="container stack gap-16">
+      <span class="section-label">03 · 하는 일</span>
+      <h2 class="h2">위 항목을 저희가 맡습니다</h2>
+
+      <div class="grid-300">
+        <div class="service-card">
+          <h3 class="h3">네이버 플레이스 관리</h3>
+          <div class="service-card__list">
+            <p class="body body--15">영업시간·메뉴·편의시설 정보를 확인하고 고칩니다</p>
+            <p class="body body--15">사진을 추가하고 새소식을 발행합니다</p>
+            <p class="body body--15">쌓인 리뷰에 답글을 씁니다</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 class="h3">인플루언서 릴스 제작</h3>
+          <div class="service-card__list">
+            <p class="body body--15">지역 기반 계정을 섭외하고 촬영 일정을 잡습니다</p>
+            <p class="body body--15">콘티·촬영·편집까지 저희가 진행합니다</p>
+            <p class="body body--15">완성 영상을 클립으로 가게 정보에도 붙입니다</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 class="h3">블로그 체험단 운영</h3>
+          <div class="service-card__list">
+            <p class="body body--15">모집·선정·방문 일정을 저희가 조율합니다</p>
+            <p class="body body--15">촬영 가이드를 주고 원고를 확인합니다</p>
+            <p class="body body--15">대가 표시 문구가 들어갔는지 발행 전에 봅니다</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AI 리뷰 가이드 ================= -->
+  <section class="section section--lg section--dark">
+    <div class="container stack gap-18">
+      <span class="section-label section-label--gold">04 · 자체 개발 시스템</span>
+
+      <h2 class="h2 h2--md review__title">
+        리뷰 부탁이 민망한 문제, <span class="marker marker--dark">도구로 풉니다</span>
+      </h2>
+
+      <p class="review__lead">
+        리뷰를 대신 써주는 도구가 아니라, 손님이 이미 겪은 경험을 문장으로 옮기는 노동만
+        대신 없애주는 도구입니다.
+      </p>
+
+      <div class="grid-180" style="margin-top:4px">
+        <div class="review__step">
+          <span class="review__step-no">STEP 01</span>
+          <p class="review__step-text">계산대 QR 스캔</p>
+        </div>
+        <div class="review__step">
+          <span class="review__step-no">STEP 02</span>
+          <p class="review__step-text">30초 설문<br>객관식 7문항</p>
+        </div>
+        <div class="review__step">
+          <span class="review__step-no">STEP 03</span>
+          <p class="review__step-text">3~5초 생성</p>
+        </div>
+        <div class="review__step">
+          <span class="review__step-no">STEP 04</span>
+          <p class="review__step-text">초안 확인 후<br>직접 수정</p>
+        </div>
+        <div class="review__step">
+          <span class="review__step-no">STEP 05</span>
+          <p class="review__step-text">복사해 등록<br>완료 코드로 리워드</p>
+        </div>
+      </div>
+
+      <div class="review__rules">
+        <div class="review__rule">
+          <span class="review__rule-dot" aria-hidden="true"></span>
+          <p class="review__rule-text">손님이 고르지 않은 사실은 리뷰에 등장하지 않습니다.</p>
+        </div>
+        <div class="review__rule">
+          <span class="review__rule-dot" aria-hidden="true"></span>
+          <p class="review__rule-text">대가를 받고 쓴 후기임을 첫 줄에 시스템이 자동으로 붙입니다. (표시·광고법)</p>
+        </div>
+        <div class="review__rule">
+          <span class="review__rule-dot" aria-hidden="true"></span>
+          <p class="review__rule-text">아쉬웠던 점도 그대로 담습니다. 사장님만 볼 수 있는 피드백으로도 쌓입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 요금제 ================= -->
+  <section class="section section--light">
+    <div class="container stack gap-16">
+      <span class="section-label">05 · 요금제</span>
+      <h2 class="h2">요금제</h2>
+
+      <div class="grid-300">
+        <div class="plan">
+          <div class="plan__head"><span class="plan__name">Beginner</span></div>
+          <div class="plan__price-wrap">
+            <span class="plan__price">28.6만원</span>
+            <span class="plan__note">1회 · 월 과금 없음</span>
+          </div>
+          <div class="plan__list">
+            <p>플레이스 기본 세팅</p>
+            <p>예약 연동</p>
+            <p>사진 촬영</p>
+            <p>리뷰 이벤트 세팅</p>
+            <p>광고 세팅</p>
+          </div>
+        </div>
+
+        <div class="plan plan--featured">
+          <div class="plan__head">
+            <span class="plan__name">Standard</span>
+            <span class="plan__badge">가장 많이 선택</span>
+          </div>
+          <div class="plan__price-wrap">
+            <span class="plan__price">월 39.6만원</span>
+            <span class="plan__note">Beginner 전체 포함</span>
+          </div>
+          <div class="plan__list">
+            <p>정보·키워드 월 관리</p>
+            <p>새소식 주 1회 발행</p>
+            <p>QR 리뷰 시스템 운영</p>
+            <p>리뷰 답글</p>
+            <p>블로그 체험단</p>
+            <p>릴스 / 클립</p>
+            <p>월간 리포트</p>
+          </div>
+        </div>
+
+        <div class="plan">
+          <div class="plan__head"><span class="plan__name">Pro</span></div>
+          <div class="plan__price-wrap">
+            <span class="plan__price">별도 견적</span>
+            <span class="plan__note">Standard 전체 포함</span>
+          </div>
+          <div class="plan__list">
+            <p>릴스·블로그 계정 운영 대행</p>
+            <p>주기적 발행</p>
+            <p>컨설팅</p>
+            <p>광고 플랫폼 선정·대행</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-notes">
+        <p>표기 금액은 부가세 포함입니다.</p>
+        <p>네이버 등 각 플랫폼에 지불하는 광고비는 고객이 직접 결제합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 문의 ================= -->
+  <section class="section section--lg section--panel section--anchor" id="contact">
+    <div class="container grid-320">
+      <div class="stack gap-14">
+        <span class="section-label">06 · 문의</span>
+        <h2 class="h2 h2--md">순서를 모르는 문제부터 풉니다</h2>
+        <p class="body">
+          전화나 이메일로 가게 이름과 지역만 알려주시면, 지금 상태에서 무엇부터 손봐야 하는지
+          정리해 알려드립니다. 진단은 무료이고 계약 의무는 없습니다. 안 맞으면 솔직히
+          말씀드립니다.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-row">
+          <span class="contact-key">전화</span>
+          <a class="contact-val" href="tel:01023620437">010-2362-0437</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">이메일</span>
+          <a class="contact-val" href="mailto:saleslabkr@gmail.com">saleslabkr@gmail.com</a>
+        </div>
+        <a class="btn" href="tel:01023620437">전화로 무료 진단 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 푸터 ================= -->
+  <footer class="site-footer">
+    <div class="container stack gap-14">
+      <div class="stack" style="gap:4px">
+        <span class="site-footer__brand">매출연구소</span>
+        <span class="site-footer__desc">운영사 : 크레소(CRESSO) · 청주 지역 소상공인 마케팅 대행</span>
+      </div>
+
+      <div class="grid-260 site-footer__grid">
+        <span class="site-footer__item">상호 : 크레소(CRESSO)</span>
+        <span class="site-footer__item">대표자 : 심유신 외 1명</span>
+        <span class="site-footer__item">사업자등록번호 : 531-26-02313</span>
+        <span class="site-footer__item">주소 : 충청북도 청주시 상당구 중고개로337번길 23</span>
+        <span class="site-footer__item">전화 : 010-2362-0437</span>
+        <span class="site-footer__item">이메일 : saleslabkr@gmail.com</span>
+      </div>
+
+      <div class="site-footer__note">
+        매출연구소는 크레소(CRESSO)가 운영하는 서비스 브랜드입니다.
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- ================= 하단 고정 CTA 바 ================= -->
+<div class="sticky-cta">
+  <div class="container">
+    <a class="btn" href="tel:01023620437">전화로 무료 진단 문의</a>
+  </div>
+</div>
+
+</body>
+</html>
