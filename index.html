@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>매출연구소 — 청주 소상공인 온라인 마케팅 | 크레소(CRESSO) 운영</title>
-<meta name="description" content="매출연구소는 크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스입니다. 네이버 플레이스 관리, 인플루언서 릴스 제작, 블로그 체험단 운영을 맡습니다.">
+<meta name="description" content="매출연구소는 크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스입니다. 단골 관리 시스템 '단골노트', 네이버 플레이스 관리, 인플루언서 릴스 제작, 블로그 체험단 운영을 맡습니다.">
 <meta name="theme-color" content="#101c33">
 <link rel="icon" href="logo-mark.png">
 <link rel="apple-touch-icon" href="logo-mark.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="매출연구소">
 <meta property="og:title" content="매출연구소 — 청주 소상공인 온라인 마케팅 | 크레소(CRESSO) 운영">
-<meta property="og:description" content="매출연구소는 크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스입니다.">
+<meta property="og:description" content="매출연구소는 크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스입니다. 단골 관리 시스템 '단골노트'를 직접 개발·운영합니다.">
 <meta property="og:image" content="logo-mark.png">
 <meta property="og:locale" content="ko_KR">
 
@@ -135,16 +135,21 @@ img{max-width:100%}
 .service-card{border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px}
 .service-card__list{display:flex;flex-direction:column;gap:7px}
 
-/* ── 리뷰 가이드 (다크) ────────────────────────────────────── */
-.review__title{color:var(--on-dark)}
-.review__lead{margin:0;font:500 clamp(18px,1.7vw,21px)/1.6 var(--font-body);color:var(--on-dark-mid);letter-spacing:-.015em;text-wrap:pretty}
-.review__step{border:1px solid var(--line-dark);padding:14px;display:flex;flex-direction:column;gap:8px}
-.review__step-no{font:500 14px/1 var(--font-mono);color:var(--gold)}
-.review__step-text{margin:0;font:700 17px/1.5 var(--font-body);color:var(--on-dark);letter-spacing:-.015em}
-.review__rules{display:flex;flex-direction:column;gap:10px;margin-top:4px}
-.review__rule{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--line-dark-soft);padding-top:12px}
-.review__rule-dot{flex:none;width:8px;height:8px;margin-top:8px;background:var(--gold)}
-.review__rule-text{margin:0;font:400 17px/1.6 var(--font-body);color:var(--on-dark-mid);letter-spacing:-.015em;text-wrap:pretty}
+/* ── 단골노트 (다크) ───────────────────────────────────────── */
+.dangol__title{color:var(--on-dark)}
+.dangol__lead{margin:0;font:500 clamp(18px,1.7vw,21px)/1.6 var(--font-body);color:var(--on-dark-mid);letter-spacing:-.015em;text-wrap:pretty}
+.dangol__step{border:1px solid var(--line-dark);padding:14px;display:flex;flex-direction:column;gap:8px}
+.dangol__step-no{font:500 14px/1 var(--font-mono);color:var(--gold)}
+.dangol__step-text{margin:0;font:700 17px/1.5 var(--font-body);color:var(--on-dark);letter-spacing:-.015em}
+.dangol__step-sub{margin:0;font:400 15px/1.5 var(--font-body);color:var(--on-dark-low);letter-spacing:-.015em}
+.dangol__rules{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.dangol__rule{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--line-dark-soft);padding-top:12px}
+.dangol__rule-dot{flex:none;width:8px;height:8px;margin-top:8px;background:var(--gold)}
+.dangol__rule-text{margin:0;font:400 17px/1.6 var(--font-body);color:var(--on-dark-mid);letter-spacing:-.015em;text-wrap:pretty}
+.dangol__owner{border-left:4px solid var(--gold);padding:2px 0 2px 14px;display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.dangol__owner-title{margin:0;font:800 clamp(19px,2vw,23px)/1.45 var(--font-display);color:var(--on-dark);letter-spacing:-.02em}
+.dangol__owner-text{margin:0;font:400 17px/1.6 var(--font-body);color:var(--on-dark-mid);letter-spacing:-.015em;text-wrap:pretty}
+.dangol__subhead{margin:14px 0 0;font:700 15px/1 var(--font-mono);color:var(--gold);letter-spacing:.04em}
 
 /* ── 요금제 ────────────────────────────────────────────────── */
 .plan{border:1px solid var(--line);background:var(--bg);padding:20px;display:flex;flex-direction:column;gap:12px}
@@ -190,7 +195,7 @@ img{max-width:100%}
   "name": "매출연구소",
   "legalName": "크레소(CRESSO)",
   "alternateName": ["크레소", "CRESSO", "매출연구소"],
-  "description": "크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스",
+  "description": "크레소(CRESSO)가 운영하는 청주 지역 소상공인 대상 온라인 마케팅 서비스. 단골 관리 시스템 '단골노트'를 직접 개발·운영합니다.",
   "image": "logo-mark.png",
   "telephone": "+82-10-2362-0437",
   "email": "saleslabkr@gmail.com",
@@ -318,7 +323,7 @@ img{max-width:100%}
         </div>
         <div class="checklist__item">
           <span class="checklist__box" aria-hidden="true"></span>
-          <p class="checklist__text">리뷰 부탁을 해야 하는데 민망해서 못 한다</p>
+          <p class="checklist__text">한 번 온 손님을 다시 부를 방법이 없다</p>
         </div>
         <div class="checklist__item">
           <span class="checklist__box" aria-hidden="true"></span>
@@ -377,55 +382,87 @@ img{max-width:100%}
     </div>
   </section>
 
-  <!-- ================= AI 리뷰 가이드 ================= -->
-  <section class="section section--lg section--dark">
+  <!-- ================= 단골노트 ================= -->
+  <section class="section section--lg section--dark section--anchor" id="dangolnote">
     <div class="container stack gap-18">
-      <span class="section-label section-label--gold">04 · 자체 개발 시스템</span>
+      <span class="section-label section-label--gold">04 · 자체 개발 시스템 · 단골노트</span>
 
-      <h2 class="h2 h2--md review__title">
-        리뷰 부탁이 민망한 문제, <span class="marker marker--dark">도구로 풉니다</span>
+      <h2 class="h2 h2--md dangol__title">
+        손님을 알아보지 못하는 문제, <span class="marker marker--dark">도구로 풉니다</span>
       </h2>
 
-      <p class="review__lead">
-        리뷰를 대신 써주는 도구가 아니라, 손님이 이미 겪은 경험을 문장으로 옮기는 노동만
-        대신 없애주는 도구입니다.
+      <p class="dangol__lead">
+        하루에 백 명을 만나도, 그중 누가 세 번째 온 사람인지 알 방법이 없습니다.
+        <strong style="color:var(--on-dark)">단골노트</strong>는 매장 손님의 전화번호를 받아
+        방문할 때마다 단골 인증서를 발급하고, 그렇게 쌓인 명단으로 재방문을 만드는
+        단골 관리 시스템입니다. 매출연구소가 직접 개발해 운영합니다.
       </p>
 
+      <p class="dangol__subhead">손님이 겪는 흐름 — 처음 20초, 그다음부터는 10초</p>
+
       <div class="grid-180" style="margin-top:4px">
-        <div class="review__step">
-          <span class="review__step-no">STEP 01</span>
-          <p class="review__step-text">계산대 QR 스캔</p>
+        <div class="dangol__step">
+          <span class="dangol__step-no">STEP 01</span>
+          <p class="dangol__step-text">테이블 QR 스캔</p>
+          <p class="dangol__step-sub">앱 설치 없음</p>
         </div>
-        <div class="review__step">
-          <span class="review__step-no">STEP 02</span>
-          <p class="review__step-text">30초 설문<br>객관식 7문항</p>
+        <div class="dangol__step">
+          <span class="dangol__step-no">STEP 02</span>
+          <p class="dangol__step-text">전화번호 입력<br>본인 확인</p>
+          <p class="dangol__step-sub">회원가입·비밀번호 없음</p>
         </div>
-        <div class="review__step">
-          <span class="review__step-no">STEP 03</span>
-          <p class="review__step-text">3~5초 생성</p>
+        <div class="dangol__step">
+          <span class="dangol__step-no">STEP 03</span>
+          <p class="dangol__step-text">오늘의 코드<br>4자리 입력</p>
+          <p class="dangol__step-sub">직원에게 물어보면 끝</p>
         </div>
-        <div class="review__step">
-          <span class="review__step-no">STEP 04</span>
-          <p class="review__step-text">초안 확인 후<br>직접 수정</p>
+        <div class="dangol__step">
+          <span class="dangol__step-no">STEP 04</span>
+          <p class="dangol__step-text">첫 인증서 발급</p>
+          <p class="dangol__step-sub">매장 로고가 담겨 카톡으로</p>
         </div>
-        <div class="review__step">
-          <span class="review__step-no">STEP 05</span>
-          <p class="review__step-text">복사해 등록<br>완료 코드로 리워드</p>
+        <div class="dangol__step">
+          <span class="dangol__step-no">STEP 05</span>
+          <p class="dangol__step-text">재방문마다<br>회차가 오른다</p>
+          <p class="dangol__step-sub">번호와 코드만 · 10초</p>
         </div>
       </div>
 
-      <div class="review__rules">
-        <div class="review__rule">
-          <span class="review__rule-dot" aria-hidden="true"></span>
-          <p class="review__rule-text">손님이 고르지 않은 사실은 리뷰에 등장하지 않습니다.</p>
+      <div class="dangol__owner">
+        <p class="dangol__owner-title">매장에서 하실 일은 하루 10초입니다</p>
+        <p class="dangol__owner-text">
+          로고 이미지 한 장과 혜택 정책(예: 3회 방문 시 음료 서비스)만 정해주시면
+          QR·인증서 디자인·시스템 세팅은 저희가 합니다. 이후에는 아침에 오늘의 코드
+          4자리를 확인해 카운터에 붙여두시면 됩니다. 태블릿도 별도 기기도 필요 없습니다.
+        </p>
+        <p class="dangol__owner-text">
+          대시보드에서는 오늘 신규·재방문 수, 누적 손님, 회차별 분포를 숫자로 보시고,
+          &ldquo;30일간 안 온 손님&rdquo;에게 버튼 하나로 소식을 보냅니다. 발송은 저희가 대행합니다.
+        </p>
+      </div>
+
+      <p class="dangol__subhead">손님 정보는 이렇게 지킵니다</p>
+
+      <div class="dangol__rules">
+        <div class="dangol__rule">
+          <span class="dangol__rule-dot" aria-hidden="true"></span>
+          <p class="dangol__rule-text">수집 항목·목적·보유기간을 고지하고 손님 동의를 받아 수집합니다. 수집하는 정보는 휴대전화번호뿐입니다.</p>
         </div>
-        <div class="review__rule">
-          <span class="review__rule-dot" aria-hidden="true"></span>
-          <p class="review__rule-text">대가를 받고 쓴 후기임을 첫 줄에 시스템이 자동으로 붙입니다. (표시·광고법)</p>
+        <div class="dangol__rule">
+          <span class="dangol__rule-dot" aria-hidden="true"></span>
+          <p class="dangol__rule-text">광고성 메시지 수신 동의는 인증서 발급과 분리해 별도로 받습니다. 동의하지 않으셔도 인증서 발급과 적립은 정상 이용하실 수 있습니다.</p>
         </div>
-        <div class="review__rule">
-          <span class="review__rule-dot" aria-hidden="true"></span>
-          <p class="review__rule-text">아쉬웠던 점도 그대로 담습니다. 사장님만 볼 수 있는 피드백으로도 쌓입니다.</p>
+        <div class="dangol__rule">
+          <span class="dangol__rule-dot" aria-hidden="true"></span>
+          <p class="dangol__rule-text">매장 간 데이터는 완전히 분리됩니다. 우리 가게 손님은 우리 가게에서만 조회되며, 다른 매장에 제공되지 않습니다.</p>
+        </div>
+        <div class="dangol__rule">
+          <span class="dangol__rule-dot" aria-hidden="true"></span>
+          <p class="dangol__rule-text">수신거부 요청은 즉시 반영되고, 발송 횟수는 사장님과 협의한 범위 안에서만 운영합니다. 손님이 스팸으로 느끼는 순간 이 서비스는 가치를 잃기 때문입니다.</p>
+        </div>
+        <div class="dangol__rule">
+          <span class="dangol__rule-dot" aria-hidden="true"></span>
+          <p class="dangol__rule-text">쌓인 손님 명단은 사장님의 자산입니다. 플랫폼이 아니라 매장에 남습니다.</p>
         </div>
       </div>
     </div>
@@ -465,7 +502,7 @@ img{max-width:100%}
           <div class="plan__list">
             <p>정보·키워드 월 관리</p>
             <p>새소식 주 1회 발행</p>
-            <p>QR 리뷰 시스템 운영</p>
+            <p>단골노트 운영 (단골 관리 시스템)</p>
             <p>리뷰 답글</p>
             <p>블로그 체험단</p>
             <p>릴스 / 클립</p>
