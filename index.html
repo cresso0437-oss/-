@@ -105,13 +105,8 @@ img{max-width:100%}
 .hero__eyebrow-bar{width:14px;height:3px;background:var(--gold);flex:none}
 .hero__eyebrow-text{font:500 14px/1 var(--font-mono);color:var(--text-meta);letter-spacing:.02em}
 .hero__sub{margin:14px 0 0}
-.hero__cta{margin-top:20px;display:flex;flex-direction:column;gap:10px}
-.hero__assure{margin-top:11px;text-align:center;font:500 17px/1.4 var(--font-body);color:var(--text-mid);letter-spacing:-.015em}
-.hero__figure{min-height:200px;display:flex;align-items:flex-end;padding:9px;
-  border:1px solid var(--line-16);
-  background:repeating-linear-gradient(135deg,#dde3ec 0 7px,#d2dae6 7px 14px)}
-.hero__figure span{font:500 12px/1.35 var(--font-mono);color:var(--text-meta);background:var(--bg);
-  padding:5px 7px;border:1px solid var(--line-16);word-break:keep-all;white-space:nowrap}
+.hero__body{max-width:680px}
+.hero__assure{margin-top:16px;font:500 17px/1.4 var(--font-body);color:var(--text-mid);letter-spacing:-.015em}
 
 /* ── 운영사 확인 ───────────────────────────────────────────── */
 .operator{border:2px solid var(--ink);background:var(--bg);padding:20px}
@@ -153,8 +148,10 @@ img{max-width:100%}
 .dangol__subhead{margin:14px 0 0;font:700 15px/1 var(--font-mono);color:var(--gold);letter-spacing:.04em}
 
 /* ── 요금제 ────────────────────────────────────────────────── */
-.plan{border:1px solid var(--line);background:var(--bg);padding:20px;display:flex;flex-direction:column;gap:12px}
-.plan--featured{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--gold)}
+.plan{border:1px solid var(--line);background:var(--bg);padding:20px;display:flex;flex-direction:column;gap:12px;
+  transition:box-shadow .45s ease}
+.plan--featured,.plan--active{box-shadow:0 0 0 2px var(--ink),5px 5px 0 var(--gold)}
+.plans-dynamic .plan--featured:not(.plan--active){box-shadow:none}
 .plan__head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .plan__name{font:800 20px/1 var(--font-display);letter-spacing:-.02em}
 .plan__badge{font:700 14px/1 var(--font-mono);background:var(--gold);border:1px solid var(--ink-btn);padding:5px 7px}
@@ -173,6 +170,49 @@ img{max-width:100%}
 .contact-key{font:500 14px/1 var(--font-mono);color:var(--text-mid);letter-spacing:.04em}
 .contact-val{font:800 clamp(19px,2vw,22px)/1.4 var(--font-display);letter-spacing:-.02em;text-decoration:none;word-break:break-all}
 
+/* ── 문의 폼 ──────────────────────────────────────────────── */
+.lead-form{position:relative;display:flex;flex-direction:column;gap:13px;
+  border-top:1px solid var(--line-soft);padding-top:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field__label{font:500 14px/1 var(--font-mono);color:var(--text-mid);letter-spacing:.04em}
+.field__req{color:#b3261e;margin-left:3px}
+.field__input{width:100%;height:52px;padding:0 13px;background:var(--bg);color:var(--text);
+  border:1px solid var(--line-16);border-radius:4px;
+  font:500 17px/1.2 var(--font-body);letter-spacing:-.015em;
+  -webkit-appearance:none;appearance:none}
+.field__input::placeholder{color:#8b98ad;font-weight:400}
+.field__input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 2px rgba(16,28,51,.18)}
+.field__input--bad{border-color:#b3261e;box-shadow:0 0 0 2px rgba(179,38,30,.16)}
+.field__select{padding-right:36px;cursor:pointer;background-repeat:no-repeat;
+  background-position:right 13px center;background-size:12px 8px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%232e3d55' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.field-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px}
+
+.consent{display:flex;flex-direction:column;gap:9px;border-top:1px solid var(--line-soft);padding-top:14px}
+.consent__check{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.consent__box{width:21px;height:21px;flex:none;margin:1px 0 0;accent-color:var(--ink-btn);cursor:pointer}
+.consent__text{font:500 16px/1.45 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
+.consent__details summary{display:inline-block;cursor:pointer;list-style:none;
+  font:500 14px/1.4 var(--font-mono);color:var(--text-meta);letter-spacing:.02em;
+  border-bottom:1px solid var(--line-soft);padding-bottom:2px}
+.consent__details summary::-webkit-details-marker{display:none}
+.consent__details summary::after{content:' ▾'}
+.consent__details[open] summary::after{content:' ▴'}
+.consent__body{margin-top:9px;border:1px solid var(--line-soft);background:var(--bg);
+  padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.consent__body p{margin:0;font:400 15px/1.55 var(--font-body);color:var(--text-mid);text-wrap:pretty}
+.consent__body b{font-weight:700;color:var(--text)}
+
+.lead-form__trap{position:absolute;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+.lead-form__assure{margin:0;text-align:center;font:500 15px/1.4 var(--font-body);
+  color:var(--text-mid);letter-spacing:-.015em}
+.form-status{margin:0;border:1px solid var(--line-16);background:var(--bg);padding:12px 14px;
+  font:500 16px/1.55 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
+.form-status--ok{border-color:var(--ink);background:rgba(194,162,92,.24)}
+.form-status--bad{border-color:#b3261e;color:#b3261e}
+.form-status[hidden]{display:none}
+.btn:disabled{opacity:.62;cursor:progress;box-shadow:none;transform:none}
+
 /* ── 푸터 ──────────────────────────────────────────────────── */
 .site-footer{padding:32px 20px 40px;background:var(--ink)}
 .site-footer__brand{font:900 19px/1.2 var(--font-display);color:var(--on-dark);letter-spacing:-.03em}
@@ -184,9 +224,21 @@ img{max-width:100%}
 
 /* ── 하단 고정 바 ──────────────────────────────────────────── */
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;height:78px;background:var(--bg);
-  border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(22,24,28,.12);padding:12px 20px;z-index:50}
+  border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(22,24,28,.12);padding:12px 20px;z-index:50;
+  transition:transform .35s ease,opacity .35s ease}
+.sticky-cta--off{transform:translateY(112%);opacity:0;pointer-events:none}
 .sticky-cta .btn{height:52px;font-size:19px;box-shadow:none}
 .sticky-cta .btn:hover,.sticky-cta .btn:focus-visible{box-shadow:none;transform:none;background:var(--ink)}
+
+/* ── 스크롤 등장 애니메이션 ────────────────────────────────── */
+html.js-reveal .reveal{opacity:0;transform:translateY(22px);
+  transition:opacity .6s cubic-bezier(.22,.61,.36,1),
+             transform .6s cubic-bezier(.22,.61,.36,1),
+             box-shadow .45s ease}
+html.js-reveal .reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html.js-reveal .reveal{opacity:1;transform:none}
+}
 </style>
 
 <script type="application/ld+json">
@@ -200,13 +252,6 @@ img{max-width:100%}
   "image": "logo-mark.png",
   "telephone": "+82-10-2362-0437",
   "email": "saleslabkr@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "KR",
-    "addressRegion": "충청북도",
-    "addressLocality": "청주시 상당구",
-    "streetAddress": "중고개로337번길 23"
-  },
   "areaServed": { "@type": "City", "name": "청주시" }
 }
 </script>
@@ -230,8 +275,8 @@ img{max-width:100%}
 
   <!-- ================= 히어로 ================= -->
   <section class="hero">
-    <div class="container grid-320">
-      <div class="stack">
+    <div class="container">
+      <div class="stack hero__body">
         <div class="hero__eyebrow">
           <span class="hero__eyebrow-bar" aria-hidden="true"></span>
           <span class="hero__eyebrow-text">청주 소상공인 온라인 진단</span>
@@ -241,15 +286,7 @@ img{max-width:100%}
 
         <p class="lead hero__sub">사진 3장, 몇 달째 틀린 영업시간. 손이 못 갔을 뿐입니다.</p>
 
-        <div class="hero__cta">
-          <a class="btn" href="tel:01023620437">진단하러 가기</a>
-        </div>
-
         <div class="hero__assure">비용 없음 · 계약 의무 없음 · 방문 없이 진행</div>
-      </div>
-
-      <div class="hero__figure">
-        <span>가게 사진 목록 — 3장에서 멈춤</span>
       </div>
     </div>
   </section>
@@ -288,10 +325,6 @@ img{max-width:100%}
           <div class="operator__row">
             <span class="operator__key">사업자등록번호</span>
             <span class="operator__val">531-26-02313</span>
-          </div>
-          <div class="operator__row">
-            <span class="operator__key">주소</span>
-            <span class="operator__val">충청북도 청주시 상당구 중고개로337번길 23</span>
           </div>
           <div class="operator__row">
             <span class="operator__key">전화</span>
@@ -392,10 +425,9 @@ img{max-width:100%}
       </h2>
 
       <p class="dangol__lead">
-        하루에 백 명을 만나도, 그중 누가 세 번째 온 사람인지 알 방법이 없습니다.
-        <strong style="color:var(--on-dark)">단골노트</strong>는 매장 손님의 전화번호를 받아
-        방문할 때마다 단골 인증서를 발급하고, 그렇게 쌓인 명단으로 재방문을 만드는
-        단골 관리 시스템입니다. 매출연구소가 직접 개발해 운영합니다.
+        하루에 백 명을 만나도, 누가 세 번째 온 손님인지 알 방법이 없습니다.
+        <strong style="color:var(--on-dark)">단골노트</strong>는 방문할 때마다 단골 인증서를
+        발급하고, 그렇게 쌓인 명단으로 재방문을 만드는 시스템입니다. 매출연구소가 직접 개발해 운영합니다.
       </p>
 
       <p class="dangol__subhead">손님이 겪는 흐름 — 처음 20초, 그다음부터는 10초</p>
@@ -413,31 +445,23 @@ img{max-width:100%}
         </div>
         <div class="dangol__step">
           <span class="dangol__step-no">STEP 03</span>
-          <p class="dangol__step-text">오늘의 코드<br>4자리 입력</p>
-          <p class="dangol__step-sub">직원에게 물어보면 끝</p>
-        </div>
-        <div class="dangol__step">
-          <span class="dangol__step-no">STEP 04</span>
           <p class="dangol__step-text">첫 인증서 발급</p>
           <p class="dangol__step-sub">매장 로고가 담겨 카톡으로</p>
         </div>
         <div class="dangol__step">
-          <span class="dangol__step-no">STEP 05</span>
+          <span class="dangol__step-no">STEP 04</span>
           <p class="dangol__step-text">재방문마다<br>회차가 오른다</p>
-          <p class="dangol__step-sub">번호와 코드만 · 10초</p>
+          <p class="dangol__step-sub">전화번호만 · 10초</p>
         </div>
       </div>
 
       <div class="dangol__owner">
-        <p class="dangol__owner-title">매장에서 하실 일은 하루 10초입니다</p>
+        <p class="dangol__owner-title">매장에서 준비할 것은 로고 한 장뿐입니다</p>
         <p class="dangol__owner-text">
-          로고 이미지 한 장과 혜택 정책(예: 3회 방문 시 음료 서비스)만 정해주시면
-          QR·인증서 디자인·시스템 세팅은 저희가 합니다. 이후에는 아침에 오늘의 코드
-          4자리를 확인해 카운터에 붙여두시면 됩니다. 태블릿도 별도 기기도 필요 없습니다.
-        </p>
-        <p class="dangol__owner-text">
-          대시보드에서는 오늘 신규·재방문 수, 누적 손님, 회차별 분포를 숫자로 보시고,
-          &ldquo;30일간 안 온 손님&rdquo;에게 버튼 하나로 소식을 보냅니다. 발송은 저희가 대행합니다.
+          로고 이미지와 혜택 정책(예: 3회 방문 시 음료 서비스)만 정해주시면 QR·인증서 디자인·시스템
+          세팅은 저희가 합니다. 태블릿도 별도 기기도 필요 없습니다. 대시보드에서 신규·재방문 수와
+          누적 손님을 보시고, &ldquo;30일간 안 온 손님&rdquo;에게 버튼 하나로 소식을 보냅니다.
+          발송은 저희가 대행합니다.
         </p>
       </div>
 
@@ -446,23 +470,15 @@ img{max-width:100%}
       <div class="dangol__rules">
         <div class="dangol__rule">
           <span class="dangol__rule-dot" aria-hidden="true"></span>
-          <p class="dangol__rule-text">수집 항목·목적·보유기간을 고지하고 손님 동의를 받아 수집합니다. 수집하는 정보는 휴대전화번호뿐입니다.</p>
+          <p class="dangol__rule-text">수집하는 정보는 휴대전화번호뿐입니다. 수집 항목·목적·보유기간을 고지하고 손님 동의를 받습니다.</p>
         </div>
         <div class="dangol__rule">
           <span class="dangol__rule-dot" aria-hidden="true"></span>
-          <p class="dangol__rule-text">광고성 메시지 수신 동의는 인증서 발급과 분리해 별도로 받습니다. 동의하지 않으셔도 인증서 발급과 적립은 정상 이용하실 수 있습니다.</p>
+          <p class="dangol__rule-text">광고성 메시지 수신 동의는 인증서 발급과 분리해 별도로 받고, 수신거부는 즉시 반영됩니다. 동의하지 않으셔도 인증서 발급과 적립은 정상 이용하실 수 있습니다.</p>
         </div>
         <div class="dangol__rule">
           <span class="dangol__rule-dot" aria-hidden="true"></span>
-          <p class="dangol__rule-text">매장 간 데이터는 완전히 분리됩니다. 우리 가게 손님은 우리 가게에서만 조회되며, 다른 매장에 제공되지 않습니다.</p>
-        </div>
-        <div class="dangol__rule">
-          <span class="dangol__rule-dot" aria-hidden="true"></span>
-          <p class="dangol__rule-text">수신거부 요청은 즉시 반영되고, 발송 횟수는 사장님과 협의한 범위 안에서만 운영합니다. 손님이 스팸으로 느끼는 순간 이 서비스는 가치를 잃기 때문입니다.</p>
-        </div>
-        <div class="dangol__rule">
-          <span class="dangol__rule-dot" aria-hidden="true"></span>
-          <p class="dangol__rule-text">쌓인 손님 명단은 사장님의 자산입니다. 플랫폼이 아니라 매장에 남습니다.</p>
+          <p class="dangol__rule-text">매장 간 데이터는 완전히 분리됩니다. 쌓인 손님 명단은 플랫폼이 아니라 사장님의 자산으로 매장에 남습니다.</p>
         </div>
       </div>
     </div>
@@ -554,7 +570,67 @@ img{max-width:100%}
           <span class="contact-key">이메일</span>
           <a class="contact-val" href="mailto:saleslabkr@gmail.com">saleslabkr@gmail.com</a>
         </div>
-        <a class="btn" href="tel:01023620437">전화로 무료 진단 문의</a>
+
+        <form class="lead-form" id="lead-form" novalidate>
+          <div class="field">
+            <label class="field__label" for="lf-store">업체명<span class="field__req">*</span></label>
+            <input class="field__input" id="lf-store" name="store" type="text"
+                   placeholder="예) 매출연구소" autocomplete="organization" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="lf-area">지역<span class="field__req">*</span></label>
+            <input class="field__input" id="lf-area" name="area" type="text"
+                   placeholder="예) 청주 흥덕구" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="lf-biz">업종<span class="field__req">*</span></label>
+            <input class="field__input" id="lf-biz" name="biz" type="text"
+                   placeholder="예) 카페" required>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="lf-tel">연락처<span class="field__req">*</span></label>
+            <input class="field__input" id="lf-tel" name="tel" type="tel" inputmode="numeric"
+                   placeholder="010-0000-0000" autocomplete="tel" maxlength="13" required>
+          </div>
+
+          <div class="field">
+            <span class="field__label">희망 상담일자</span>
+            <div class="field-row">
+              <input class="field__input" id="lf-date" name="date" type="date" aria-label="희망 상담 날짜">
+              <select class="field__input field__select" id="lf-time" name="time" aria-label="희망 상담 시간대">
+                <option value="아무때나">아무때나 괜찮아요</option>
+                <option value="오전">오전 (09–12시)</option>
+                <option value="오후">오후 (12–18시)</option>
+                <option value="저녁">저녁 (18시 이후)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="consent">
+            <label class="consent__check" for="lf-agree">
+              <input class="consent__box" id="lf-agree" name="agree" type="checkbox" value="동의" required>
+              <span class="consent__text">(필수) 개인정보 수집·이용에 동의합니다</span>
+            </label>
+            <details class="consent__details">
+              <summary>수집 항목 · 목적 · 보유 기간 보기</summary>
+              <div class="consent__body">
+                <p><b>수집 항목</b> — 업체명, 지역, 업종, 연락처, 희망 상담일자</p>
+                <p><b>수집 목적</b> — 무료 진단 리포트 작성 및 상담 연락</p>
+                <p><b>보유 기간</b> — 상담 종료 후 6개월간 보관하고 지체 없이 파기합니다. 그 전에도 요청하시면 즉시 파기합니다.</p>
+                <p>동의를 거부하실 수 있으며, 이 경우 무료 진단 리포트 신청이 제한됩니다. 전화(010-2362-0437)로도 문의하실 수 있습니다.</p>
+              </div>
+            </details>
+          </div>
+
+          <input class="lead-form__trap" type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="btn" id="lf-submit" type="submit">무료 진단 리포트 신청</button>
+          <p class="lead-form__assure">비용 없음 · 계약 의무 없음</p>
+          <p class="form-status" id="lf-status" role="status" aria-live="polite" hidden></p>
+        </form>
       </div>
     </div>
   </section>
@@ -571,7 +647,6 @@ img{max-width:100%}
         <span class="site-footer__item">상호 : 크레소(CRESSO)</span>
         <span class="site-footer__item">대표자 : 심유신 외 1명</span>
         <span class="site-footer__item">사업자등록번호 : 531-26-02313</span>
-        <span class="site-footer__item">주소 : 충청북도 청주시 상당구 중고개로337번길 23</span>
         <span class="site-footer__item">전화 : 010-2362-0437</span>
         <span class="site-footer__item">이메일 : saleslabkr@gmail.com</span>
       </div>
@@ -584,11 +659,220 @@ img{max-width:100%}
 </main>
 
 <!-- ================= 하단 고정 CTA 바 ================= -->
-<div class="sticky-cta">
+<div class="sticky-cta" id="sticky-cta">
   <div class="container">
-    <a class="btn" href="tel:01023620437">전화로 무료 진단 문의</a>
+    <a class="btn" href="#contact">진단하러 가기</a>
   </div>
 </div>
+
+<!-- ================= 무료 진단 신청 폼 ================= -->
+<script>
+(function () {
+  /* 구글 스프레드시트 Apps Script 웹앱 주소 (…/exec 로 끝나는 주소) */
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbx6-mGQCXt9CTlNaTHsKhEywv5fZ6sxmf8-NN9uV7qVGStDLDDenrG6hM2gHdGa1lV8/exec';
+
+  var form = document.getElementById('lead-form');
+  if (!form) return;
+
+  var status = document.getElementById('lf-status');
+  var submit = document.getElementById('lf-submit');
+  var tel    = document.getElementById('lf-tel');
+  var date   = document.getElementById('lf-date');
+  var agree  = document.getElementById('lf-agree');
+  var TEL_TEXT = '010-2362-0437';
+
+  /* 지난 날짜는 못 고르게 (한국 시간 기준 오늘부터) */
+  date.min = new Date(Date.now() + 9 * 36e5).toISOString().slice(0, 10);
+
+  /* 연락처 자동 하이픈 */
+  tel.addEventListener('input', function () {
+    var d = tel.value.replace(/\D/g, '').slice(0, 11), out = d;
+    if (d.length > 7)      out = d.slice(0, 3) + '-' + d.slice(3, 7) + '-' + d.slice(7);
+    else if (d.length > 3) out = d.slice(0, 3) + '-' + d.slice(3);
+    tel.value = out;
+  });
+
+  function say(msg, kind) {
+    status.textContent = msg;
+    status.className = 'form-status' + (kind ? ' form-status--' + kind : '');
+    status.hidden = false;
+  }
+  function fail(el, msg) {
+    if (el.classList) el.classList.add('field__input--bad');
+    say(msg, 'bad');
+    el.focus();
+    return false;
+  }
+  function val(id) { return document.getElementById(id).value.trim(); }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+
+    Array.prototype.forEach.call(
+      form.querySelectorAll('.field__input--bad'),
+      function (el) { el.classList.remove('field__input--bad'); }
+    );
+
+    if (form._hp.value) return;                    /* 자동 스팸 차단 */
+
+    if (!val('lf-store')) return fail(document.getElementById('lf-store'), '업체명을 입력해 주세요.');
+    if (!val('lf-area'))  return fail(document.getElementById('lf-area'),  '지역을 입력해 주세요.');
+    if (!val('lf-biz'))   return fail(document.getElementById('lf-biz'),   '업종을 입력해 주세요.');
+
+    var digits = tel.value.replace(/\D/g, '');
+    if (digits.length < 10 || digits.charAt(0) !== '0') {
+      return fail(tel, '연락처를 정확히 입력해 주세요. (예: 010-0000-0000)');
+    }
+    if (!agree.checked) {
+      say('개인정보 수집·이용에 동의해 주셔야 신청할 수 있습니다.', 'bad');
+      agree.focus();
+      return;
+    }
+    if (ENDPOINT.indexOf('__APPS') === 0) {
+      say('접수 시스템 연결 전입니다. 전화 ' + TEL_TEXT + ' 로 연락 주시면 바로 도와드리겠습니다.', 'bad');
+      return;
+    }
+
+    var sentTel = tel.value;
+    var body = new URLSearchParams({
+      store: val('lf-store'),
+      area:  val('lf-area'),
+      biz:   val('lf-biz'),
+      tel:   sentTel,
+      date:  date.value || '미지정',
+      time:  document.getElementById('lf-time').value,
+      agree: '동의',
+      page:  location.href
+    });
+
+    submit.disabled = true;
+    submit.textContent = '보내는 중…';
+    say('신청을 보내고 있습니다…');
+
+    fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: body })
+      .then(function () {
+        form.reset();
+        submit.textContent = '신청이 접수되었습니다';
+        say('신청해 주셔서 감사합니다. 영업일 기준 1일 안에 ' + sentTel + ' 로 연락드리겠습니다.', 'ok');
+      })
+      .catch(function () {
+        submit.disabled = false;
+        submit.textContent = '무료 진단 리포트 신청';
+        say('전송에 실패했습니다. 전화 ' + TEL_TEXT + ' 로 연락 주시면 바로 도와드리겠습니다.', 'bad');
+      });
+  });
+})();
+</script>
+
+<!-- ================= 스크롤 연출 ================= -->
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canObserve = 'IntersectionObserver' in window;
+
+  /* ── 1. 스크롤에 맞춰 하나씩 떠오르기 ───────────────────── */
+  if (canObserve && !reduce) {
+    document.documentElement.classList.add('js-reveal');
+
+    var GRID = '.grid-300,.grid-320,.grid-180,.grid-260,.dangol__rules';
+    var targets = [];
+
+    function collect(el, order) {
+      el.classList.add('reveal');
+      if (order) el.style.transitionDelay = Math.min(order, 5) * 70 + 'ms';
+      targets.push(el);
+    }
+
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.section > .container'),
+      function (box) {
+        var kids = Array.prototype.slice.call(box.children);
+        if (box.matches(GRID)) {
+          kids.forEach(function (k, i) { collect(k, i); });
+        } else {
+          kids.forEach(function (k) {
+            if (k.matches(GRID)) {
+              Array.prototype.slice.call(k.children).forEach(function (g, i) { collect(g, i); });
+            } else {
+              collect(k, 0);
+            }
+          });
+        }
+      }
+    );
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-in');
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+
+    targets.forEach(function (t) { io.observe(t); });
+  }
+
+  /* ── 2. 요금제 — 화면 가운데 오는 카드로 강조가 따라옴 ──── */
+  var firstPlan = document.querySelector('.plan');
+  var plansBox = firstPlan ? firstPlan.parentElement : null;
+  var plans = plansBox ? Array.prototype.slice.call(plansBox.querySelectorAll('.plan')) : [];
+
+  if (plans.length > 1) {
+    var stacked = false;
+
+    function measure() {
+      /* 카드가 세로로 쌓였는지 (모바일) 가로로 나란한지 (데스크톱) */
+      stacked = plans[0].offsetTop !== plans[1].offsetTop;
+      plansBox.classList.toggle('plans-dynamic', stacked);
+      if (!stacked) {
+        plans.forEach(function (p) { p.classList.remove('plan--active'); });
+      }
+      paint();
+    }
+
+    function paint() {
+      if (!stacked) return;
+
+      var mid = window.innerHeight / 2;
+      var best = null, bestDist = Infinity, visible = false;
+
+      plans.forEach(function (p) {
+        var r = p.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < window.innerHeight) visible = true;
+        var dist = Math.abs(r.top + r.height / 2 - mid);
+        if (dist < bestDist) { bestDist = dist; best = p; }
+      });
+
+      plans.forEach(function (p) {
+        p.classList.toggle('plan--active', visible && p === best);
+      });
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () { paint(); ticking = false; });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', measure);
+    measure();
+  }
+
+  /* ── 3. 문의 폼이 보이면 하단 고정 바를 내림 ─────────────── */
+  var bar = document.getElementById('sticky-cta');
+  var contact = document.getElementById('contact');
+
+  if (bar && contact && canObserve) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        bar.classList.toggle('sticky-cta--off', en.isIntersecting);
+      });
+    }, { threshold: 0.3 }).observe(contact);
+  }
+})();
+</script>
 
 </body>
 </html>
