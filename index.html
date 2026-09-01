@@ -101,8 +101,8 @@ img{max-width:100%}
 
 /* ── 히어로 ────────────────────────────────────────────────── */
 .hero{padding:84px 20px 36px;background:var(--bg)}
-.hero__eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:14px}
-.hero__eyebrow-bar{width:14px;height:3px;background:var(--gold);flex:none}
+.hero__eyebrow{display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.hero__eyebrow-bar{width:14px;height:3px;margin-top:7px;background:var(--gold);flex:none}
 .hero__eyebrow-text{font:500 14px/1 var(--font-mono);color:var(--text-meta);letter-spacing:.02em}
 .hero__sub{margin:14px 0 0}
 .hero__body{max-width:680px}
@@ -119,17 +119,40 @@ img{max-width:100%}
 .operator__val{font:500 17px/1.5 var(--font-body);color:var(--text);letter-spacing:-.015em;word-break:keep-all}
 
 /* ── 체크리스트 ────────────────────────────────────────────── */
-.checklist{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--bg)}
-.checklist__item{display:flex;gap:14px;align-items:flex-start;padding:16px;border-bottom:1px solid var(--line-soft)}
-.checklist__item:last-child{border-bottom:none}
-.checklist__box{flex:none;width:26px;height:26px;border:2px solid var(--ink);background:var(--bg)}
-.checklist__text{margin:0;font:500 clamp(17px,1.5vw,19px)/1.5 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
+/* ── 자주 묻는 질문 ────────────────────────────────────────── */
+.faq{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--bg)}
+.faq__item{border-bottom:1px solid var(--line-soft)}
+.faq__item:last-child{border-bottom:none}
+.faq__q{display:flex;align-items:flex-start;gap:10px;cursor:pointer;list-style:none;padding:16px;
+  font:700 clamp(17px,1.5vw,19px)/1.5 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
+.faq__q::-webkit-details-marker{display:none}
+.faq__q::before{content:'Q';flex:none;font:700 15px/1.6 var(--font-mono);color:var(--gold)}
+.faq__q::after{content:'';flex:none;margin-left:auto;margin-top:6px;width:9px;height:9px;
+  border-right:2px solid var(--text-meta);border-bottom:2px solid var(--text-meta);
+  transform:rotate(45deg);transition:transform .2s ease}
+.faq__item[open] .faq__q::after{transform:rotate(-135deg);margin-top:9px}
+.faq__q:hover{background:rgba(194,162,92,.1)}
+.faq__a{margin:0;padding:0 16px 18px 37px;font:400 17px/1.65 var(--font-body);
+  color:var(--text-mid);letter-spacing:-.015em;text-wrap:pretty}
+
+/* ── 사업자 정보 (카카오 채널 심사용 · 작게) ───────────────── */
+.bizinfo{border:1px solid var(--line-soft);background:var(--bg);padding:14px 16px;
+  display:flex;flex-direction:column;gap:7px}
+.bizinfo__lead{margin:0;font:700 15px/1.5 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
+.bizinfo__row{display:flex;flex-wrap:wrap}
+.bizinfo__row span{font:400 13px/1.7 var(--font-body);color:var(--text-meta);letter-spacing:-.01em;white-space:nowrap}
+.bizinfo__row span:not(:last-child)::after{content:' /';margin-right:7px;color:var(--line)}
+.bizinfo__row b{font-weight:700;color:var(--text-mid)}
+.bizinfo__row a{color:inherit}
 .callout-gold{border-left:4px solid var(--gold);padding:4px 0 4px 14px;display:flex;flex-direction:column;gap:4px}
 .callout-gold__title{margin:0;font:800 clamp(19px,2vw,23px)/1.45 var(--font-display);letter-spacing:-.02em}
 
 /* ── 서비스 카드 ───────────────────────────────────────────── */
 .service-card{border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px}
 .service-card__list{display:flex;flex-direction:column;gap:7px}
+.service-card__head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.service-card__tag{font:500 13px/1 var(--font-mono);color:var(--text-meta);
+  border:1px solid var(--line-16);padding:4px 7px;white-space:nowrap}
 
 /* ── 단골노트 (다크) ───────────────────────────────────────── */
 .dangol__title{color:var(--on-dark)}
@@ -279,100 +302,138 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
       <div class="stack hero__body">
         <div class="hero__eyebrow">
           <span class="hero__eyebrow-bar" aria-hidden="true"></span>
-          <span class="hero__eyebrow-text">청주 소상공인 온라인 진단</span>
+          <span class="hero__eyebrow-text">청주 소상공인 온라인 마케팅 · 크레소(CRESSO)</span>
         </div>
 
-        <h1 class="h1">사장님도 아는데, <span class="marker">아직 그대로입니다</span></h1>
+        <h1 class="h1"> 확신 없는 마케팅 <span class="marker"> 그동안 답답하셨죠? </span></h1>
 
-        <p class="lead hero__sub">사진 3장, 몇 달째 틀린 영업시간. 손이 못 갔을 뿐입니다.</p>
+        <p class="lead hero__sub">
+          사장님은 본업에만 집중하세요. 
+          마케팅은 저희가 연구합니다.
+        </p>
 
-        <div class="hero__assure">비용 없음 · 계약 의무 없음 · 방문 없이 진행</div>
+        <div class="hero__assure">청주 전담 · 계정은 사장님 명의 · 순위 조작 없음</div>
       </div>
     </div>
   </section>
 
-  <!-- ================= 운영사 확인 ================= -->
+  <!-- ================= 매출연구소 소개 ================= -->
   <section class="section section--panel section--anchor" id="operator">
     <div class="container stack gap-16">
-      <span class="section-label">01 · 운영사</span>
-      <h2 class="h2">누가 운영하는 서비스인가</h2>
+      <span class="section-label">01 · 매출연구소</span>
+      <h2 class="h2">청주만 보고, 도구까지 직접 만듭니다</h2>
 
-      <div class="operator">
-        <p class="operator__line">
-          <strong>매출연구소</strong>는 <strong>크레소(CRESSO)</strong>가 운영하는
-          서비스 브랜드입니다.
-        </p>
-        <p class="body" style="margin-top:10px">
-          사업자등록증상의 상호는 <strong>크레소(CRESSO)</strong>이고,
-          청주 지역 소상공인을 대상으로 하는 온라인 마케팅 서비스를
-          <strong>매출연구소</strong>라는 이름으로 제공하고 있습니다.
-          두 이름은 같은 사업자를 가리킵니다.
-        </p>
+      <p class="lead">
+        매출연구소는 청주 지역 소상공인만 맡는 온라인 마케팅 팀입니다. 상권을 직접 걸어보고,
+        플레이스를 열어보고, 이 가게에 지금 무엇이 비어 있는지부터 정리한 다음 시작합니다.
+        지역을 넓히는 대신, 맡은 가게가 실제로 어떻게 달라졌는지를 매달 숫자로 확인합니다.
+      </p>
 
-        <div class="operator__table">
-          <div class="operator__row">
-            <span class="operator__key">상호</span>
-            <span class="operator__val">크레소(CRESSO)</span>
-          </div>
-          <div class="operator__row">
-            <span class="operator__key">서비스명</span>
-            <span class="operator__val">매출연구소</span>
-          </div>
-          <div class="operator__row">
-            <span class="operator__key">대표자</span>
-            <span class="operator__val">심유신 외 1명</span>
-          </div>
-          <div class="operator__row">
-            <span class="operator__key">사업자등록번호</span>
-            <span class="operator__val">531-26-02313</span>
-          </div>
-          <div class="operator__row">
-            <span class="operator__key">전화</span>
-            <span class="operator__val"><a href="tel:01023620437">010-2362-0437</a></span>
-          </div>
-          <div class="operator__row">
-            <span class="operator__key">이메일</span>
-            <span class="operator__val"><a href="mailto:saleslabkr@gmail.com">saleslabkr@gmail.com</a></span>
-          </div>
+      <div class="grid-300">
+        <div class="service-card">
+          <h3 class="h3">순위를 보장하지 않습니다</h3>
+          <p class="body body--15">
+            허위 리뷰, 대가 미표시 후기, 순위 조작성 작업은 진행하지 않습니다.
+            몇 달 뒤 계정이 위험해지는 방법은 애초에 쓰지 않습니다.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3 class="h3">재방문까지 봅니다</h3>
+          <p class="body body--15">
+            대부분의 대행은 새 손님을 부르는 데서 끝납니다. 저희는 온 손님을 기록하고
+            다시 부르는 시스템(단골노트)을 직접 개발해 운영합니다.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3 class="h3">만든 것은 전부 사장님 것</h3>
+          <p class="body body--15">
+            모든 작업은 사장님 명의 계정에서 진행합니다. 촬영 사진, 쌓인 리뷰, 발행한 글,
+            예약 시스템, 손님 명단은 계약이 끝나도 매장에 남습니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="bizinfo">
+        <p class="bizinfo__lead">
+          매출연구소는 크레소(CRESSO)가 운영하는 서비스 브랜드입니다.
+        </p>
+        <div class="bizinfo__row">
+          <span>상호 <b>크레소(CRESSO)</b></span>
+          <span>서비스명 <b>매출연구소</b></span>
+          <span>대표자 심유신 외 1명</span>
+          <span>사업자등록번호 531-26-02313</span>
+          <span>전화 <a href="tel:01023620437">010-2362-0437</a></span>
+          <span>이메일 <a href="mailto:saleslabkr@gmail.com">saleslabkr@gmail.com</a></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= 공감 ================= -->
-  <section class="section section--light">
+  <!-- ================= 자주 묻는 질문 ================= -->
+  <section class="section section--light section--anchor" id="faq">
     <div class="container stack gap-16">
-      <span class="section-label">02 · 공감</span>
-      <h2 class="h2">알고는 계셨는데 못 고치신 것들</h2>
+      <span class="section-label">02 · 자주 묻는 질문</span>
+      <h2 class="h2">사장님들이 가장 먼저 묻는 것들</h2>
 
-      <div class="checklist">
-        <div class="checklist__item">
-          <span class="checklist__box" aria-hidden="true"></span>
-          <p class="checklist__text">영업시간이 바뀌었는데 아직 안 고쳤다</p>
-        </div>
-        <div class="checklist__item">
-          <span class="checklist__box" aria-hidden="true"></span>
-          <p class="checklist__text">사진을 더 올려야지 하고 몇 달째다</p>
-        </div>
-        <div class="checklist__item">
-          <span class="checklist__box" aria-hidden="true"></span>
-          <p class="checklist__text">한 번 온 손님을 다시 부를 방법이 없다</p>
-        </div>
-        <div class="checklist__item">
-          <span class="checklist__box" aria-hidden="true"></span>
-          <p class="checklist__text">새소식이 2년 전에 멈춰 있다</p>
-        </div>
-        <div class="checklist__item">
-          <span class="checklist__box" aria-hidden="true"></span>
-          <p class="checklist__text">답글을 달아야지 하면서 쌓여만 간다</p>
-        </div>
+      <div class="faq">
+        <details class="faq__item">
+          <summary class="faq__q">그래서 몇 등까지 올려주시나요?</summary>
+          <p class="faq__a">
+            그건 저희가 아니라 네이버가 정합니다. 대신 순위를 만드는 항목 &mdash; 정보 정확도,
+            사진, 리뷰 수와 답글, 새소식, 클릭률 &mdash; 을 하나씩 채워 올립니다.
+            등수를 보장하는 곳은 대개 조작을 씁니다.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">효과는 언제쯤 보이나요?</summary>
+          <p class="faq__a">
+            정보·사진·예약처럼 바로 바뀌는 항목은 첫 달에 끝납니다. 리뷰와 검색 노출처럼
+            쌓여야 움직이는 항목은 보통 2~3개월입니다. 어디까지 왔는지는 매달 리포트로 보여드립니다.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">제가 따로 해야 할 일이 있나요?</summary>
+          <p class="faq__a">
+            처음에 촬영 날짜 한 번, 그리고 로고와 혜택 정책을 정해주시는 것 정도입니다.
+            나머지는 저희가 합니다.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">중간에 그만두면 어떻게 되나요?</summary>
+          <p class="faq__a">
+            약정으로 묶지 않습니다. 그만두셔도 계정, 사진, 리뷰, 예약 시스템,
+            쌓인 손님 명단은 그대로 매장에 남습니다.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">이용료 말고 더 나가는 돈이 있나요?</summary>
+          <p class="faq__a">
+            네이버에 내는 광고비, 체험단 리워드 원가(음료·메뉴), 인쇄물 실물 제작비는
+            이용료에 포함되지 않습니다. 처음부터 구분해서 안내드립니다.
+          </p>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">우리 가게는 어떤 걸 해야 하나요?</summary>
+          <p class="faq__a">
+            플레이스 상태와 상권 경쟁 상황을 먼저 본 다음 말씀드립니다. 세팅이 안 되어 있으면
+            BEGINNER, 같은 상권에서 순위를 다투는 중이면 STANDARD, 신규 유입을 공격적으로
+            늘려야 할 시점이면 PRO입니다. 안 맞으면 안 맞는다고 말씀드립니다.
+          </p>
+        </details>
       </div>
 
       <div class="callout-gold">
-        <p class="callout-gold__title">몰라서가 아닙니다</p>
+        <p class="callout-gold__title">여기에 없는 게 궁금하시면</p>
         <p class="body">
-          오늘 장사가 먼저라 계속 뒤로 밀렸을 뿐입니다. 사장님 탓이 아니라,
-          일이 굴러가는 방식의 문제입니다. 무엇부터 손대야 하는지 순서를 정리해 드립니다.
+          전화 주시면 계약 얘기 없이 지금 상태부터 봐드립니다.
+          <a href="tel:01023620437">010-2362-0437</a>
         </p>
       </div>
     </div>
@@ -382,33 +443,77 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
   <section class="section section--panel">
     <div class="container stack gap-16">
       <span class="section-label">03 · 하는 일</span>
-      <h2 class="h2">위 항목을 저희가 맡습니다</h2>
+      <h2 class="h2">한 번 세팅하고 끝내지 않습니다</h2>
+
+      <p class="lead">
+        세팅은 시작일 뿐입니다. 주력은 매달 사람 손이 들어가는 관리입니다.
+        아래는 STANDARD 기준으로 매달 진행되는 항목입니다.
+      </p>
 
       <div class="grid-300">
         <div class="service-card">
-          <h3 class="h3">네이버 플레이스 관리</h3>
+          <div class="service-card__head">
+            <h3 class="h3">초기 세팅 · 촬영</h3>
+            <span class="service-card__tag">계약 후 1회</span>
+          </div>
           <div class="service-card__list">
-            <p class="body body--15">영업시간·메뉴·편의시설 정보를 확인하고 고칩니다</p>
-            <p class="body body--15">사진을 추가하고 새소식을 발행합니다</p>
-            <p class="body body--15">쌓인 리뷰에 답글을 씁니다</p>
+            <p class="body body--15">플레이스 기본 세팅과 사진 최적화</p>
+            <p class="body body--15">매장·음식·제품 촬영</p>
+            <p class="body body--15">네이버 예약 연동, 플레이스 광고 세팅</p>
           </div>
         </div>
 
         <div class="service-card">
-          <h3 class="h3">인플루언서 릴스 제작</h3>
+          <div class="service-card__head">
+            <h3 class="h3">네이버 플레이스 관리</h3>
+            <span class="service-card__tag">매달</span>
+          </div>
           <div class="service-card__list">
-            <p class="body body--15">지역 기반 계정을 섭외하고 촬영 일정을 잡습니다</p>
-            <p class="body body--15">콘티·촬영·편집까지 저희가 진행합니다</p>
-            <p class="body body--15">완성 영상을 클립으로 가게 정보에도 붙입니다</p>
+            <p class="body body--15">업체 정보·영업시간·메뉴 점검 (월 1회)</p>
+            <p class="body body--15">검색 키워드 최적화 (월 1회)</p>
+            <p class="body body--15">새소식 발행 (주 1회)</p>
           </div>
         </div>
 
         <div class="service-card">
-          <h3 class="h3">블로그 체험단 운영</h3>
+          <div class="service-card__head">
+            <h3 class="h3">리뷰 · 체험단</h3>
+            <span class="service-card__tag">매달</span>
+          </div>
           <div class="service-card__list">
-            <p class="body body--15">모집·선정·방문 일정을 저희가 조율합니다</p>
-            <p class="body body--15">촬영 가이드를 주고 원고를 확인합니다</p>
-            <p class="body body--15">대가 표시 문구가 들어갔는지 발행 전에 봅니다</p>
+            <p class="body body--15">달리는 리뷰에 전건 답글</p>
+            <p class="body body--15">리뷰 이벤트 기획·세팅</p>
+            <p class="body body--15">블로그 체험단 모집·선정·원고 확인</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__head">
+            <h3 class="h3">단골노트 운영</h3>
+            <span class="service-card__tag">자체 개발</span>
+          </div>
+          <div class="service-card__list">
+            <p class="body body--15">방문할 때마다 카톡으로 단골 인증서 발급</p>
+            <p class="body body--15">쌓인 명단으로 재방문 유도</p>
+            <p class="body body--15">30일간 안 온 손님에게 소식 발송 대행</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 class="h3">릴스 · 클립 제작</h3>
+          <div class="service-card__list">
+            <p class="body body--15">기획·촬영·편집·업로드까지 진행</p>
+            <p class="body body--15">지역 기반 인플루언서 섭외</p>
+            <p class="body body--15">완성 영상을 플레이스 클립으로 연결</p>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 class="h3">월간 성과 리포트</h3>
+          <div class="service-card__list">
+            <p class="body body--15">조회수·클릭·리뷰·재방문 수 정리</p>
+            <p class="body body--15">다음 달에 무엇부터 할지 제안</p>
+            <p class="body body--15">초기에는 방문해서 직접 설명</p>
           </div>
         </div>
       </div>
