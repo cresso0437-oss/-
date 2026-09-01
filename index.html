@@ -83,6 +83,7 @@ img{max-width:100%}
 /* ── 격자 ──────────────────────────────────────────────────── */
 .grid-320{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;align-items:start}
 .grid-300{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-items:start}
+.grid-300--even{align-items:stretch}
 .grid-180{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 .grid-260{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px 24px}
 
@@ -135,15 +136,6 @@ img{max-width:100%}
 .faq__a{margin:0;padding:0 16px 18px 37px;font:400 17px/1.65 var(--font-body);
   color:var(--text-mid);letter-spacing:-.015em;text-wrap:pretty}
 
-/* ── 사업자 정보 (카카오 채널 심사용 · 작게) ───────────────── */
-.bizinfo{border:1px solid var(--line-soft);background:var(--bg);padding:14px 16px;
-  display:flex;flex-direction:column;gap:7px}
-.bizinfo__lead{margin:0;font:700 15px/1.5 var(--font-body);letter-spacing:-.015em;text-wrap:pretty}
-.bizinfo__row{display:flex;flex-wrap:wrap}
-.bizinfo__row span{font:400 13px/1.7 var(--font-body);color:var(--text-meta);letter-spacing:-.01em;white-space:nowrap}
-.bizinfo__row span:not(:last-child)::after{content:' /';margin-right:7px;color:var(--line)}
-.bizinfo__row b{font-weight:700;color:var(--text-mid)}
-.bizinfo__row a{color:inherit}
 .callout-gold{border-left:4px solid var(--gold);padding:4px 0 4px 14px;display:flex;flex-direction:column;gap:4px}
 .callout-gold__title{margin:0;font:800 clamp(19px,2vw,23px)/1.45 var(--font-display);letter-spacing:-.02em}
 
@@ -327,7 +319,7 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
       순위 올려준다는 전화, 한 번쯤 받아보셨을 겁니다. 그 방법은 저희도 압니다. 안 쓸 뿐입니다.
       </p>
 
-      <div class="grid-300">
+      <div class="grid-300 grid-300--even">
         <div class="service-card">
           <h3 class="h3">순위를 보장하지 않습니다.</h3>
           <p class="body body--15">
@@ -349,20 +341,6 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
             모든 작업은 사장님 명의 계정에서 진행합니다. 촬영 사진, 쌓인 리뷰, 발행한 글,
             예약 시스템, 손님 명단은 계약이 끝나도 매장에 남습니다.
           </p>
-        </div>
-      </div>
-
-      <div class="bizinfo">
-        <p class="bizinfo__lead">
-          매출연구소는 크레소(CRESSO)가 운영하는 서비스 브랜드입니다.
-        </p>
-        <div class="bizinfo__row">
-          <span>상호 <b>크레소(CRESSO)</b></span>
-          <span>서비스명 <b>매출연구소</b></span>
-          <span>대표자 심유신 외 1명</span>
-          <span>사업자등록번호 531-26-02313</span>
-          <span>전화 <a href="tel:01023620437">010-2362-0437</a></span>
-          <span>이메일 <a href="mailto:saleslabkr@gmail.com">saleslabkr@gmail.com</a></span>
         </div>
       </div>
     </div>
