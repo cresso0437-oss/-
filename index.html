@@ -38,7 +38,8 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;
+  word-break:keep-all;overflow-wrap:break-word}
 a{color:var(--ink)}
 a:hover{color:#3b5c93}
 img{max-width:100%}
@@ -58,15 +59,16 @@ img{max-width:100%}
 .section--anchor{scroll-margin-top:72px}
 
 /* ── 타이포 ────────────────────────────────────────────────── */
-.h1{margin:0;font:900 clamp(33px,4.6vw,52px)/1.24 var(--font-display);letter-spacing:-.035em;text-wrap:pretty}
-.h2{margin:0;font:900 clamp(26px,3.4vw,38px)/1.3 var(--font-display);letter-spacing:-.03em;text-wrap:pretty}
+.h1{margin:0;font:900 clamp(33px,4.6vw,52px)/1.24 var(--font-display);letter-spacing:-.035em;text-wrap:balance}
+.h2{margin:0;font:900 clamp(26px,3.4vw,38px)/1.3 var(--font-display);letter-spacing:-.03em;text-wrap:balance}
 .h2--md{font-size:clamp(27px,3.6vw,40px)}
-.h3{margin:0;font:800 clamp(20px,2.1vw,23px)/1.35 var(--font-display);letter-spacing:-.025em;text-wrap:pretty}
+.h3{margin:0;font:800 clamp(20px,2.1vw,23px)/1.35 var(--font-display);letter-spacing:-.025em;text-wrap:balance}
 .lead{margin:0;font:400 clamp(18px,1.6vw,21px)/1.55 var(--font-body);color:var(--text-mid);letter-spacing:-.015em;text-wrap:pretty}
 .body{margin:0;font:400 17px/1.6 var(--font-body);color:var(--text-mid);letter-spacing:-.015em;text-wrap:pretty}
 .body--15{line-height:1.5}
 .section-label{font:500 13px/1 var(--font-mono);color:var(--text-meta);letter-spacing:.06em}
 .section-label--gold{color:var(--gold)}
+.nb{white-space:nowrap}
 .marker{background:linear-gradient(transparent 58%,rgba(194,162,92,.38) 58%)}
 .marker--dark{background:linear-gradient(transparent 58%,rgba(194,162,92,.42) 58%);color:var(--on-dark)}
 
@@ -107,6 +109,7 @@ img{max-width:100%}
 .hero__eyebrow-text{font:500 14px/1 var(--font-mono);color:var(--text-meta);letter-spacing:.02em}
 .hero__sub{margin:14px 0 0}
 .hero__body{max-width:680px}
+.hero__assure:empty{display:none}
 .hero__assure{margin-top:16px;font:500 17px/1.4 var(--font-body);color:var(--text-mid);letter-spacing:-.015em}
 
 /* ── 운영사 확인 ───────────────────────────────────────────── */
@@ -241,6 +244,40 @@ img{max-width:100%}
 .sticky-cta .btn{height:52px;font-size:19px;box-shadow:none}
 .sticky-cta .btn:hover,.sticky-cta .btn:focus-visible{box-shadow:none;transform:none;background:var(--ink)}
 
+/* ── 히어로 등장 · 형광펜 · 손맛 ──────────────────────────────
+   모두 html.js-reveal 안에서만 동작합니다. 이 클래스는 모션 최소화
+   설정이 꺼져 있을 때만 붙으므로, 켠 사용자에게는 전부 적용되지
+   않고 처음부터 완성된 화면이 보입니다.                        */
+@keyframes heroIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes barIn{from{width:0}to{width:14px}}
+@keyframes markerIn{from{background-size:0 100%}to{background-size:100% 100%}}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+html.js-reveal .hero__eyebrow,
+html.js-reveal .hero .h1,
+html.js-reveal .hero__sub,
+html.js-reveal .hero__assure{opacity:0;animation:heroIn .62s cubic-bezier(.22,.61,.36,1) forwards}
+html.js-reveal .hero__eyebrow{animation-delay:.05s}
+html.js-reveal .hero .h1{animation-delay:.15s}
+html.js-reveal .hero__sub{animation-delay:.28s}
+html.js-reveal .hero__assure{animation-delay:.38s}
+
+html.js-reveal .hero__eyebrow-bar{animation:barIn .5s cubic-bezier(.22,.61,.36,1) .1s backwards}
+
+/* 제목의 형광펜이 왼쪽에서 오른쪽으로 그어짐 */
+html.js-reveal .hero .marker{background-repeat:no-repeat;
+  animation:markerIn .75s cubic-bezier(.22,.61,.36,1) .6s backwards}
+
+/* 카드에 손을 올리면 버튼과 같은 그림자가 살짝 */
+@media (hover:hover){
+  .service-card:hover{box-shadow:0 0 0 1px var(--ink),3px 3px 0 var(--gold)}
+  .faq__item[open] .faq__q{background:rgba(194,162,92,.1)}
+}
+
+/* 질문을 펼치면 답이 부드럽게 내려옴 */
+html.js-reveal .faq__item[open] .faq__a{animation:faqIn .3s ease}
+
+
 /* ── 스크롤 등장 애니메이션 ────────────────────────────────── */
 html.js-reveal .reveal{opacity:0;transform:translateY(22px);
   transition:opacity .6s cubic-bezier(.22,.61,.36,1),
@@ -290,7 +327,7 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
       <div class="stack hero__body">
         <div class="hero__eyebrow">
           <span class="hero__eyebrow-bar" aria-hidden="true"></span>
-          <span class="hero__eyebrow-text">청주 소상공인 온라인 마케팅 · 크레소(CRESSO)</span>
+          <span class="hero__eyebrow-text">청주 소상공인 온라인 마케팅 · <span class="nb">크레소(CRESSO)</span></span>
         </div>
 
         <h1 class="h1"> 확신 없는 마케팅 <span class="marker"> 그동안 답답하셨죠? </span></h1>
@@ -343,7 +380,7 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
   </section>
 
   <!-- ================= 하는 일 ================= -->
-  <section class="section section--panel">
+  <section class="section section--light">
     <div class="container stack gap-16">
       <span class="section-label">02 · 하는 일</span>
       <h2 class="h2">한 번 세팅하고 끝내지 않습니다</h2>
@@ -360,11 +397,11 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
             <span class="service-card__tag">세팅 + 매달</span>
           </div>
           <div class="service-card__list">
-            <p class="body body--15">기본 세팅 · 사진 최적화 · 매장/음식 촬영 (계약 후 1회)</p>
-            <p class="body body--15">네이버 예약 연동 · 플레이스 광고 세팅 (계약 후 1회)</p>
-            <p class="body body--15">업체 정보·영업시간·메뉴 점검 (월 1회)</p>
-            <p class="body body--15">검색 키워드 최적화 (월 1회)</p>
-            <p class="body body--15">새소식 발행 (주 1회)</p>
+            <p class="body body--15">기본 세팅 · 사진 최적화 · 매장/음식 촬영 <span class="nb">(계약 후 1회)</span></p>
+            <p class="body body--15">네이버 예약 연동 · 플레이스 광고 세팅 <span class="nb">(계약 후 1회)</span></p>
+            <p class="body body--15">업체 정보·영업시간·메뉴 점검 <span class="nb">(월 1회)</span></p>
+            <p class="body body--15">검색 키워드 최적화 <span class="nb">(월 1회)</span></p>
+            <p class="body body--15">새소식 발행 <span class="nb">(주 1회)</span></p>
           </div>
         </div>
 
@@ -374,7 +411,7 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
             <span class="service-card__tag">세팅 + 매달</span>
           </div>
           <div class="service-card__list">
-            <p class="body body--15">비즈프로필 개설 · 가게 정보와 사진 세팅 (계약 후 1회)</p>
+            <p class="body body--15">비즈프로필 개설 · 가게 정보와 사진 세팅 <span class="nb">(계약 후 1회)</span></p>
             <p class="body body--15">동네 소식 · 쿠폰 발행으로 단골 맺기 유도</p>
             <p class="body body--15">문의 응대와 후기 관리</p>
           </div>
@@ -528,6 +565,7 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
           <div class="plan__list">
             <p>정보·키워드 월 관리</p>
             <p>새소식 주 1회 발행</p>
+            <p>당근 비즈프로필 관리</p>
             <p>단골노트 운영 (단골 관리 시스템)</p>
             <p>리뷰 답글</p>
             <p>블로그 체험단</p>
@@ -587,7 +625,7 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
           <div class="field">
             <label class="field__label" for="lf-area">지역<span class="field__req">*</span></label>
             <input class="field__input" id="lf-area" name="area" type="text"
-                   placeholder="예) 청주 흥덕구" required>
+                   placeholder="예) 청주 ○○동" required>
           </div>
 
           <div class="field">
@@ -607,7 +645,7 @@ html.js-reveal .reveal.is-in{opacity:1;transform:none}
             <div class="field-row">
               <input class="field__input" id="lf-date" name="date" type="date" aria-label="희망 상담 날짜">
               <select class="field__input field__select" id="lf-time" name="time" aria-label="희망 상담 시간대">
-                <option value="아무때나">아무때나 괜찮아요</option>
+                <option value="상관없음">상관없음</option>
                 <option value="오전">오전 (09–12시)</option>
                 <option value="오후">오후 (12–18시)</option>
                 <option value="저녁">저녁 (18시 이후)</option>
