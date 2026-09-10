@@ -1172,7 +1172,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 
    비워두면 전화 안내 문구가 대신 표시됩니다.
    ═══════════════════════════════════════════════════════════ */
-const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzyXOnNtZnNxhruGUzRaFRmwxPkYGm_N-zUCDTB_tvSiy1U1BuFdlQdaxp2eEWa0Ewu/exec';
+const SHEET_ENDPOINT = '';
 const PHONE          = '010-2362-0437';
 
 (function(){
@@ -1424,15 +1424,17 @@ const PHONE          = '010-2362-0437';
     btn.textContent = '전송 중…';
 
     try {
-      // Apps Script 웹앱은 폼 형식(URLSearchParams)으로 보내야 사전요청(preflight) 없이 통과합니다
-      const params = new URLSearchParams();
-      Object.entries(data).forEach(([k, v]) => params.append(k, v));
-
-      await fetch(SHEET_ENDPOINT, {
+      // text/plain 으로 보내면 사전요청(preflight) 없이 통과하고, 응답까지 읽을 수 있습니다
+      const res = await fetch(SHEET_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
-        body: params
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data),
+        redirect: 'follow'
       });
+
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const out = await res.json().catch(() => null);
+      if (!out || out.ok !== true) throw new Error('bad response');
 
       form.reset();
       msg.textContent = '신청이 접수되었습니다. 1영업일 이내에 연락드리겠습니다.';
