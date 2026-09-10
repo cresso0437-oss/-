@@ -329,13 +329,7 @@ section{padding:clamp(78px,9.5vw,124px) 0;position:relative;z-index:1}
   border:1px solid var(--line);box-shadow:var(--shadow),0 0 70px -34px var(--glow);
 }
 @media(max-width:940px){.book-cover{position:static;max-width:340px;margin-inline:auto}}
-.book-toc{margin-top:22px;display:flex;flex-wrap:wrap;gap:7px}
-@media(max-width:940px){.book-toc{max-width:340px;margin-inline:auto}}
-.book-toc span{
-  font-size:11.5px;letter-spacing:-.02em;color:var(--ink-3);
-  border:1px solid var(--line-w);border-radius:100px;padding:5px 11px;
-}
-.book-toc span.on{color:var(--gold-lt);border-color:var(--line);background:rgba(201,164,106,.06)}
+.book-cover img{width:100%;height:auto;display:block}
 
 .book-quote{
   border-left:2px solid var(--gold);padding:4px 0 4px 24px;margin:0 0 34px;
@@ -685,7 +679,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
       <div class="hero-badge">스터디스토리 · <b>2~5등급</b> 공부 컨설팅</div>
       <h1>등급을 올리는 건<br>재능이 아니라<br><em>정확한 공부법</em>입니다.</h1>
       <p class="lead">
-        평가원 모의고사 1등급을 놓쳐본 적 없는 수학 1등급.
+        평가원 모의고사 3등급에서 1등급으로, 교내 내신 1.2등급.
         공부법 하나로 팔로워 5,000명을 모았던 방법을 그대로 전합니다.
       </p>
       <div class="hero-cta">
@@ -762,7 +756,8 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
         <dl class="name-meta">
           <div><dt>학력</dt><dd><em>現</em> 충북대학교 수의과대학</dd></div>
           <div><dt>학력</dt><dd><em>前</em> 한양대학교 공과대학</dd></div>
-          <div><dt>성적</dt><dd>평가원 모의고사 1등급을 놓쳐본 적 없는 수학 1등급</dd></div>
+          <div><dt>성적</dt><dd>평가원 모의고사 3 → 1등급</dd></div>
+          <div><dt>내신</dt><dd>교내 내신 1.2등급</dd></div>
           <div><dt>컨설팅</dt><dd>누적 수강생 700명+</dd></div>
           <div><dt>전자책</dt><dd>공부법 전자책 200부 판매</dd></div>
           <div><dt>SNS</dt><dd>팔로워 5,000명+ 달성 <span class="off">現 미운영</span></dd></div>
@@ -811,43 +806,16 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
   <div class="wrap">
     <p class="eyebrow reveal">Textbook</p>
     <h2 class="title reveal">강의는 이 책을<br><em>교재로 진행합니다.</em></h2>
-    <p class="desc reveal">평가원 모의고사 1등급을 놓쳐본 적 없는 수학 1등급, 그 과정을 가공 없이 정리한 전자책입니다. <b style="color:var(--gold-lt);font-weight:600">강의를 신청하시면 교재로 함께 제공됩니다.</b></p>
+    <p class="desc reveal">평가원 모의고사 3등급에서 1등급까지, 그 과정을 가공 없이 정리한 전자책입니다. <b style="color:var(--gold-lt);font-weight:600">강의를 신청하시면 교재로 함께 제공됩니다.</b></p>
 
     <div class="book-grid">
 
       <div class="reveal">
         <div class="book-cover">
-          <svg viewBox="0 0 340 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="교재 표지">
-            <defs>
-              <linearGradient id="bc" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#161b23"/><stop offset="1" stop-color="#080a0e"/>
-              </linearGradient>
-              <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#e6c184"/><stop offset="1" stop-color="#9e7a3d"/>
-              </linearGradient>
-            </defs>
-            <rect width="340" height="470" fill="url(#bc)"/>
-            <rect x="0" y="0" width="5" height="470" fill="url(#bg2)" opacity=".85"/>
-            <rect x="30" y="30" width="280" height="410" fill="none" stroke="#c9a46a" stroke-opacity=".3"/>
-            <text x="54" y="86" fill="#c9a46a" font-family="Georgia,serif" font-size="12" letter-spacing="4">STUDY STORY</text>
-            <text x="54" y="176" fill="#ffffff" font-size="30" font-family="'Noto Serif KR',serif" font-weight="500">공부법</text>
-            <text x="54" y="228" fill="#e6c184" font-size="24" font-family="'Noto Serif KR',serif">내가 다시</text>
-            <text x="54" y="262" fill="#e6c184" font-size="24" font-family="'Noto Serif KR',serif">노베이스로</text>
-            <text x="54" y="296" fill="#e6c184" font-size="24" font-family="'Noto Serif KR',serif">시작한다면</text>
-            <path d="M54 324h96" stroke="#c9a46a" stroke-width="1.4"/>
-            <text x="54" y="360" fill="#ffffff" fill-opacity=".55" font-size="13">2~5등급 · 노베이스를 위한</text>
-            <text x="54" y="382" fill="#ffffff" fill-opacity=".55" font-size="13">수능 수학 학습 설계서</text>
-            <text x="54" y="418" fill="#c9a46a" font-family="Georgia,serif" font-size="13" letter-spacing="2">SIGMA T</text>
-          </svg>
+          <!-- ★ 교재 표지 (cover.png 를 index.html 옆에 두세요) -->
+          <img src="cover.png" alt="교재 표지 — 내가 다시 노베이스로 시작한다면" loading="lazy">
         </div>
-        <div class="book-toc" aria-label="목차">
-          <span>프롤로그</span><span>수능 수학이란 무엇인가</span>
-          <span class="on">머리가 좋지 않아도 1등급을 받을 수 있는가</span>
-          <span class="on">실패하지 않는 계획을 세우는 법</span>
-          <span>기본 개념</span><span>실전 개념</span><span>기출</span>
-          <span class="on">문제를 늘려도 점수가 그대로인 이유</span>
-          <span>N제</span><span>실전 모의고사</span><span>자주 받는 질문</span>
-        </div>
+
       </div>
 
       <div class="reveal">
@@ -866,7 +834,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
         <div class="proof">
           <i><em>강의 신청 시</em> 교재 제공</i>
           <i>전자책 <em>200부</em> 판매</i>
-          <i><em>11개</em> 챕터</i>
+          <i><em>Chp 0 → 5</em> 구성</i>
         </div>
 
         <div class="book-note">
@@ -1088,7 +1056,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 
         <!-- 과목별 현재 등급 -->
         <fieldset class="fs">
-          <legend>현재 등급 <span style="color:var(--ink-3)">· 과목별로 선택</span></legend>
+          <legend>현재 등급 <span style="color:var(--ink-3)">· 모의고사 기준으로 선택해 주세요</span></legend>
           <div class="grade">
           <div class="grade-row">
             <span>국어</span>
@@ -1146,7 +1114,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
           </div>
           <div class="field">
             <label for="f-phone">연락처<span class="req">*</span></label>
-            <input type="tel" id="f-phone" name="연락처" placeholder="010-0000-0000" autocomplete="tel" required>
+            <input type="tel" id="f-phone" name="연락처" placeholder="010-1234-5678" autocomplete="tel" required>
           </div>
         </div>
 
@@ -1177,7 +1145,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
     <div>
       <p class="fbrand">스터디스토리 <span>STUDY STORY</span></p>
       <p>고등부 수학 1:1 컨설팅 · 국영수 학습법 코칭<br>
-         문의 <b>010-0000-0000</b> · 이메일 <b>contact@example.com</b></p>
+         문의 <b>010-2362-0437</b></p>
     </div>
     <p>© 2026 스터디스토리 STUDY STORY. All rights reserved.</p>
   </div>
@@ -1190,20 +1158,22 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   ⚙️ 폼 전송 설정
+   ⚙️ 신청서 → 구글 시트 연결 설정
    ───────────────────────────────────────────────────────────
-   비워두면 → 방문자의 메일 앱이 열리는 방식으로 동작합니다.
-   신청 내용을 자동으로 받아보려면 아래 두 줄만 채우세요.
+   아래 SHEET_ENDPOINT 한 줄만 채우면 신청 내용이
+   구글 시트에 자동으로 한 줄씩 쌓입니다. (README 참고)
 
-   [Formspree 사용법 - 무료]
-   1) https://formspree.io 가입
-   2) New Form 생성 → 표시되는 주소 복사
-   3) FORM_ENDPOINT 에 붙여넣기
-      예) const FORM_ENDPOINT = 'https://formspree.io/f/abcdwxyz';
+   1) 구글 시트 새로 만들기
+   2) 확장 프로그램 → Apps Script → README의 코드 붙여넣기
+   3) 배포 → 새 배포 → 웹 앱
+      · 실행 계정 : 나
+      · 액세스 권한 : 모든 사용자
+   4) 생성된 /exec 주소를 아래에 붙여넣기
+
+   비워두면 전화 안내 문구가 대신 표시됩니다.
    ═══════════════════════════════════════════════════════════ */
-const FORM_ENDPOINT  = '';
-const FALLBACK_EMAIL = 'contact@example.com';   // ← 본인 이메일로 변경
-const PHONE          = '010-0000-0000';         // ← 본인 연락처로 변경
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzyXOnNtZnNxhruGUzRaFRmwxPkYGm_N-zUCDTB_tvSiy1U1BuFdlQdaxp2eEWa0Ewu/exec';
+const PHONE          = '010-2362-0437';
 
 (function(){
   'use strict';
@@ -1440,12 +1410,10 @@ const PHONE          = '010-0000-0000';         // ← 본인 연락처로 변�
       신청시각: new Date().toLocaleString('ko-KR')
     };
 
-    if (!FORM_ENDPOINT) {
-      const body = Object.entries(data).map(([k, v]) => k + ': ' + v).join('\n');
-      location.href = 'mailto:' + FALLBACK_EMAIL
-        + '?subject=' + encodeURIComponent('[신청] ' + name + ' (' + grade + ')')
-        + '&body=' + encodeURIComponent(body);
-      msg.textContent = '메일 작성 창이 열립니다. 열리지 않는다면 ' + PHONE + ' 으로 연락 주세요.';
+    // 구글 시트 미연결 시 → 전화 안내
+    if (!SHEET_ENDPOINT) {
+      msg.innerHTML = '아직 자동 접수가 연결되지 않았습니다.<br>'
+        + '<b>' + PHONE + '</b> 으로 문자 또는 전화 주시면 바로 상담해 드립니다.';
       msg.className = 'form-msg ok';
       return;
     }
@@ -1454,18 +1422,24 @@ const PHONE          = '010-0000-0000';         // ← 본인 연락처로 변�
     const label = btn.innerHTML;
     btn.disabled = true;
     btn.textContent = '전송 중…';
+
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method:'POST',
-        headers:{'Content-Type':'application/json', Accept:'application/json'},
-        body: JSON.stringify(data)
+      // Apps Script 웹앱은 폼 형식(URLSearchParams)으로 보내야 사전요청(preflight) 없이 통과합니다
+      const params = new URLSearchParams();
+      Object.entries(data).forEach(([k, v]) => params.append(k, v));
+
+      await fetch(SHEET_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: params
       });
-      if (!res.ok) throw new Error(res.status);
+
       form.reset();
       msg.textContent = '신청이 접수되었습니다. 1영업일 이내에 연락드리겠습니다.';
       msg.className = 'form-msg ok';
     } catch (err) {
-      msg.textContent = '전송 중 문제가 발생했습니다. 잠시 후 다시 시도하시거나 ' + PHONE + ' 으로 연락 주세요.';
+      msg.innerHTML = '전송 중 문제가 발생했습니다.<br>'
+        + '<b>' + PHONE + '</b> 으로 연락 주시면 바로 도와드리겠습니다.';
       msg.className = 'form-msg err';
     } finally {
       btn.disabled = false;
