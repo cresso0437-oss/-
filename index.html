@@ -298,6 +298,14 @@ section{padding:clamp(78px,9.5vw,124px) 0;position:relative;z-index:1}
 .name-meta div{display:flex;gap:14px;align-items:baseline}
 .name-meta dt{color:var(--gold);min-width:52px;font-size:12.5px;letter-spacing:.02em;margin:0;flex:none}
 .name-meta dd{margin:0;color:var(--ink-2);letter-spacing:-.02em}
+.name-meta dd em{
+  font-style:normal;font-family:var(--serif);font-weight:600;color:var(--gold);
+  font-size:13px;margin-right:5px;
+}
+.name-meta dd .off{
+  font-size:11.5px;color:var(--ink-3);border:1px solid var(--line-w);
+  border-radius:100px;padding:2px 8px;margin-left:6px;white-space:nowrap;
+}
 
 .sub-h{font-size:19px;font-weight:600;margin:0 0 6px;letter-spacing:-.045em}
 .career{list-style:none;margin:30px 0 0;padding:0;position:relative}
@@ -309,61 +317,6 @@ section{padding:clamp(78px,9.5vw,124px) 0;position:relative;z-index:1}
 .career .yr{font-family:var(--serif);font-size:14px;color:var(--gold);letter-spacing:.1em;display:block;margin-bottom:3px}
 .career .txt{font-size:15.5px;font-weight:500;letter-spacing:-.035em}
 .career .sub{font-size:13.5px;color:var(--ink-3);display:block;margin-top:2px;letter-spacing:-.02em}
-
-/* ═══════════════════════════════════════════════════════════
-   6. 서비스 카드 3종 ★ 스크롤 시 선명 + 채색
-   ═══════════════════════════════════════════════════════════ */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:58px}
-@media(max-width:1000px){.cards{grid-template-columns:1fr;gap:30px;max-width:540px;margin-inline:auto}}
-
-.card{
-  border:1px solid var(--line-w);border-radius:26px;overflow:hidden;
-  background:linear-gradient(180deg,var(--panel),#080a0e);
-  display:flex;flex-direction:column;
-  transition:border-color .55s var(--ease),transform .55s var(--ease),box-shadow .55s var(--ease);
-  box-shadow:0 20px 60px rgba(0,0,0,.45);
-}
-.card:hover{border-color:var(--line);transform:translateY(-8px);box-shadow:0 38px 84px rgba(0,0,0,.62),0 0 56px -30px var(--glow)}
-
-/* ★ --p 값이 0 → 1 로 변하며 흑백·흐림이 풀리고 색이 살아납니다 */
-.card-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#070a0d;--p:0}
-.card-media > img,
-.card-media > svg{
-  width:100%;height:100%;object-fit:cover;
-  filter:
-    grayscale(calc((1 - var(--p)) * 100%))
-    blur(calc((1 - var(--p)) * 12px))
-    brightness(calc(.48 + var(--p) * .52))
-    contrast(calc(.7 + var(--p) * .3))
-    saturate(calc(.15 + var(--p) * 1.05));
-  transform:scale(calc(1.15 - var(--p) * .15));
-  opacity:calc(.4 + var(--p) * .6);
-  transition:filter .2s linear,transform .2s linear,opacity .2s linear;
-  will-change:filter,transform;
-}
-.card-media::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent 40%,rgba(7,9,12,.8));
-  opacity:calc(1 - var(--p) * .32);
-}
-.card-no{
-  position:absolute;top:18px;left:18px;z-index:2;
-  font-family:var(--serif);font-size:13px;letter-spacing:.22em;color:var(--gold-lt);
-  border:1px solid var(--line);background:rgba(7,9,12,.62);backdrop-filter:blur(8px);
-  padding:6px 14px;border-radius:100px;
-}
-.card-body{padding:30px 28px 32px;display:flex;flex-direction:column;flex:1}
-.card-body h3{font-size:21px;font-weight:600;margin:0 0 13px;letter-spacing:-.05em}
-.card-body > p{font-size:14.5px;color:var(--ink-2);margin:0 0 22px;line-height:1.8;letter-spacing:-.025em}
-.card-body b{color:var(--gold-lt);font-weight:600}
-.card-list{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:10px;font-size:13.8px;color:var(--ink-2);letter-spacing:-.022em}
-.card-list li{position:relative;padding-left:20px}
-.card-list li::before{
-  content:'';position:absolute;left:0;top:9px;width:7px;height:7px;
-  border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);transform:rotate(-45deg);
-}
-.card-cta{margin-top:auto;font-size:13.5px;color:var(--gold-lt);display:inline-flex;align-items:center;gap:8px;font-weight:600;transition:gap .4s var(--ease)}
-.card:hover .card-cta{gap:14px}
 
 /* ═══════════════════════════════════════════════════════════
    7. 교재 (전자책) 섹션
@@ -455,7 +408,50 @@ section{padding:clamp(78px,9.5vw,124px) 0;position:relative;z-index:1}
 }
 
 /* ═══════════════════════════════════════════════════════════
-   9. 카카오톡 후기 캐러셀
+   9. 현장 사진 갤러리 — 스크롤 시 선명해지며 색이 생김
+   ═══════════════════════════════════════════════════════════ */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+@media(max-width:1000px){.gallery{grid-template-columns:1fr;gap:28px;max-width:540px;margin-inline:auto}}
+.gal{margin:0}
+.gal-media{
+  position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:20px;--p:0;
+  border:1px solid var(--line-w);
+  background:linear-gradient(150deg,#141922,#080a0e);
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+  transition:border-color .55s var(--ease),transform .55s var(--ease);
+}
+.gal:hover .gal-media{border-color:var(--line);transform:translateY(-6px)}
+/* 사진이 없을 때 보이는 자리 표시 */
+.gal-ph{
+  position:absolute;inset:0;display:grid;place-items:center;z-index:0;
+  font-family:var(--serif);font-size:13px;letter-spacing:.28em;color:var(--ink-3);
+}
+.gal-media > img{
+  position:relative;z-index:1;width:100%;height:100%;object-fit:cover;
+  filter:
+    grayscale(calc((1 - var(--p)) * 100%))
+    blur(calc((1 - var(--p)) * 12px))
+    brightness(calc(.5 + var(--p) * .5))
+    contrast(calc(.72 + var(--p) * .28))
+    saturate(calc(.15 + var(--p) * 1.05));
+  transform:scale(calc(1.14 - var(--p) * .14));
+  opacity:calc(.42 + var(--p) * .58);
+  transition:filter .2s linear,transform .2s linear,opacity .2s linear;
+  will-change:filter,transform;
+}
+.gal-media::after{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:20px;
+  background:linear-gradient(180deg,transparent 46%,rgba(7,9,12,.82));
+  opacity:calc(1 - var(--p) * .3);
+}
+.gal figcaption{padding:20px 4px 0;font-size:13.8px;color:var(--ink-3);line-height:1.75;letter-spacing:-.025em}
+.gal figcaption b{
+  display:block;color:var(--ink);font-size:16px;font-weight:600;
+  letter-spacing:-.045em;margin-bottom:6px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   10. 카카오톡 후기 캐러셀
    ═══════════════════════════════════════════════════════════ */
 .rev-head{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;margin-bottom:46px}
 .rev-nav{display:flex;gap:10px}
@@ -620,6 +616,9 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
   .career li:nth-child(n+3) .sub{display:none}
   .career li{padding-bottom:20px}
 
+  .gal figcaption{padding-top:16px;font-size:13.4px}
+  .gal figcaption b{font-size:15.3px}
+
   /* 교재 섹션 여백 */
   .book-list li{padding:15px 0;grid-template-columns:30px 1fr;gap:11px}
   .book-note{padding:18px 20px}
@@ -628,7 +627,6 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 
   /* 여백 축소 */
   .name-card{padding:30px 26px}
-  .card-body{padding:24px 22px 26px}
   .pain{padding:22px 20px 24px}
   .rev-head{margin-bottom:32px}
   .rules{padding:20px 22px;margin-top:28px}
@@ -645,7 +643,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .card-media{--p:1 !important}
+  .gal-media{--p:1 !important}
   .play-ring{animation:none}
   .rev-track{transition:none}
 }
@@ -660,7 +658,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
     <div class="nav-links" id="navLinks">
       <a href="#about">강사 소개</a>
       <a href="#book">교재</a>
-      <a href="#service">프로그램</a>
+      <a href="#onsite">현장</a>
       <a href="#reviews">후기</a>
       <a href="#faq">FAQ</a>
       <a href="#contact" class="nav-cta-m">신청하기 →</a>
@@ -684,11 +682,11 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 
   <div class="wrap">
     <div class="hero-inner reveal">
-      <div class="hero-badge">스터디스토리 · <b>2~5등급</b> 수학 컨설팅</div>
+      <div class="hero-badge">스터디스토리 · <b>2~5등급</b> 공부 컨설팅</div>
       <h1>등급을 올리는 건<br>재능이 아니라<br><em>정확한 공부법</em>입니다.</h1>
       <p class="lead">
-        6월 모의평가 3등급에서 수능 백분위 99까지.
-        머리가 아니라 방향을 바꾼 결과입니다.
+        평가원 모의고사 수학 1등급.
+        공부법 하나로 팔로워 5,000명을 모았던 방법을 그대로 전합니다.
       </p>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-gold">
@@ -700,9 +698,9 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 
       <!-- ★ 실적 숫자 (data-count 값이 스크롤 시 카운트업 됩니다) -->
       <div class="hero-facts">
-        <div class="fact"><b><span data-count="99">0</span><i>백분위</i></b><span>2024 수능 수학</span></div>
-        <div class="fact"><b><span data-count="700">0</span><i>명+</i></b><span>컨설팅 수강생</span></div>
-        <div class="fact"><b><span data-count="200">0</span><i>부</i></b><span>교재 판매</span></div>
+        <div class="fact"><b><span data-count="5000">0</span><i>명+</i></b><span>팔로워 달성 · 現 미운영</span></div>
+        <div class="fact"><b><span data-count="700">0</span><i>명+</i></b><span>공부 컨설팅 수강생</span></div>
+        <div class="fact"><b><span data-count="200">0</span><i>부</i></b><span>전자책 판매</span></div>
       </div>
     </div>
   </div>
@@ -754,7 +752,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
       <!-- ★ 이름 / 직함 / 기본 정보 -->
       <div class="name-card reveal">
         <p class="role">Study Story · Math Consultant</p>
-        <h3 class="nm">주민수<small>JOO MIN SOO</small></h3>
+        <h3 class="nm">시그마쌤<small>SIGMA T</small></h3>
         <hr>
         <p class="tag">
           특별히 뛰어난 머리를 타고나지는 않았습니다.
@@ -762,10 +760,12 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
           가공 없이 그대로 전합니다.
         </p>
         <dl class="name-meta">
-          <div><dt>성적</dt><dd>2024 수능 수학 백분위 99 · 표준점수 142</dd></div>
-          <div><dt>현재</dt><dd>충북대학교 수의과대학</dd></div>
-          <div><dt>이전</dt><dd>한양대학교 공과대학</dd></div>
-          <div><dt>수업</dt><dd>1:1 개인 · 전국 화상</dd></div>
+          <div><dt>학력</dt><dd><em>現</em> 충북대학교 수의과대학</dd></div>
+          <div><dt>학력</dt><dd><em>前</em> 한양대학교 공과대학</dd></div>
+          <div><dt>성적</dt><dd>평가원 모의고사 수학 1등급</dd></div>
+          <div><dt>컨설팅</dt><dd>누적 수강생 700명+</dd></div>
+          <div><dt>전자책</dt><dd>공부법 전자책 200부 판매</dd></div>
+          <div><dt>SNS</dt><dd>팔로워 5,000명+ 달성 <span class="off">現 미운영</span></dd></div>
         </dl>
       </div>
 
@@ -775,29 +775,29 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
         <p class="desc" style="font-size:14.5px">부풀린 숫자는 없습니다.</p>
         <ul class="career">
           <li>
-            <span class="yr">2024 수능</span>
-            <span class="txt">수학 백분위 99 · 표준점수 142 · 원점수 92</span>
-            <span class="sub">6월 모의평가 3등급에서 출발한 결과</span>
+            <span class="yr">첫 번째</span>
+            <span class="txt">한양대학교 공과대학 입학</span>
+            <span class="sub">평범한 조건에서 출발한 첫 입시</span>
           </li>
           <li>
-            <span class="yr">2024</span>
-            <span class="txt">군 복무 중 수능 재도전, 군수 성공</span>
-            <span class="sub">한양대학교 공과대학 재학 중 입대</span>
+            <span class="yr">두 번째</span>
+            <span class="txt">공부 컨설팅 계정 팔로워 5,000명 달성</span>
+            <span class="sub">공부법 콘텐츠만으로 모은 숫자 · 現 미운영</span>
+          </li>
+          <li>
+            <span class="yr">세 번째</span>
+            <span class="txt">공부법 전자책 200부 판매</span>
+            <span class="sub">지금 강의의 교재가 된 책</span>
+          </li>
+          <li>
+            <span class="yr">네 번째</span>
+            <span class="txt">군 복무 중 군수로 수의과대학 입학 성공</span>
+            <span class="sub">가장 불리한 조건에서 증명한 방법</span>
           </li>
           <li>
             <span class="yr">현재</span>
-            <span class="txt">충북대학교 수의과대학 재학</span>
-            <span class="sub">2024 평가원 모의고사 수학 1등급</span>
-          </li>
-          <li>
-            <span class="yr">누적 700명+</span>
-            <span class="txt">중·하위권 수학 학습 컨설팅</span>
-            <span class="sub">2~5등급 구간 학생이 대부분</span>
-          </li>
-          <li>
-            <span class="yr">누적 200부</span>
-            <span class="txt">공부법 전자책 판매</span>
-            <span class="sub">입시 인스타그램 팔로워 5,000명+</span>
+            <span class="txt">2~5등급 대상 공부 컨설팅</span>
+            <span class="sub">누적 수강생 700명+</span>
           </li>
         </ul>
       </div>
@@ -811,7 +811,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
   <div class="wrap">
     <p class="eyebrow reveal">Textbook</p>
     <h2 class="title reveal">강의는 이 책을<br><em>교재로 진행합니다.</em></h2>
-    <p class="desc reveal">백분위 99까지의 과정을 가공 없이 정리한 전자책입니다.</p>
+    <p class="desc reveal">평가원 1등급까지의 과정을 가공 없이 정리한 전자책입니다. <b style="color:var(--gold-lt);font-weight:600">강의를 신청하시면 교재로 함께 제공됩니다.</b></p>
 
     <div class="book-grid">
 
@@ -830,14 +830,14 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
             <rect x="0" y="0" width="5" height="470" fill="url(#bg2)" opacity=".85"/>
             <rect x="30" y="30" width="280" height="410" fill="none" stroke="#c9a46a" stroke-opacity=".3"/>
             <text x="54" y="86" fill="#c9a46a" font-family="Georgia,serif" font-size="12" letter-spacing="4">STUDY STORY</text>
-            <text x="54" y="176" fill="#ffffff" font-size="30" font-family="'Noto Serif KR',serif" font-weight="500">수능 수학</text>
+            <text x="54" y="176" fill="#ffffff" font-size="30" font-family="'Noto Serif KR',serif" font-weight="500">공부법</text>
             <text x="54" y="228" fill="#e6c184" font-size="24" font-family="'Noto Serif KR',serif">내가 다시</text>
             <text x="54" y="262" fill="#e6c184" font-size="24" font-family="'Noto Serif KR',serif">노베이스로</text>
             <text x="54" y="296" fill="#e6c184" font-size="24" font-family="'Noto Serif KR',serif">시작한다면</text>
             <path d="M54 324h96" stroke="#c9a46a" stroke-width="1.4"/>
             <text x="54" y="360" fill="#ffffff" fill-opacity=".55" font-size="13">2~5등급 · 노베이스를 위한</text>
             <text x="54" y="382" fill="#ffffff" fill-opacity=".55" font-size="13">수능 수학 학습 설계서</text>
-            <text x="54" y="418" fill="#c9a46a" font-family="Georgia,serif" font-size="13" letter-spacing="2">주민수</text>
+            <text x="54" y="418" fill="#c9a46a" font-family="Georgia,serif" font-size="13" letter-spacing="2">SIGMA T</text>
           </svg>
         </div>
         <div class="book-toc" aria-label="목차">
@@ -864,20 +864,19 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
         </ul>
 
         <div class="proof">
-          <i>6월 모의평가 <em>3등급</em></i>
-          <span style="color:var(--gold)">→</span>
-          <i>9월 백분위 <em>96</em></i>
-          <span style="color:var(--gold)">→</span>
-          <i>수능 백분위 <em>99</em></i>
+          <i><em>강의 신청 시</em> 교재 제공</i>
+          <i>전자책 <em>200부</em> 판매</i>
+          <i><em>11개</em> 챕터</i>
         </div>
 
         <div class="book-note">
           <p>이미 1등급이라면 읽지 않아도 좋습니다.<br>
-             이 책은 <b>노베이스부터 2~5등급 구간</b>에서 가장 효율이 높습니다.</p>
+             이 책은 <b>노베이스부터 2~5등급 구간</b>에서 가장 효율이 높습니다.<br>
+             따로 구매하실 필요는 없습니다. <b>강의에 교재가 포함됩니다.</b></p>
         </div>
 
         <a href="#contact" class="btn btn-gold">
-          교재로 시작하는 강의 신청하기
+          교재를 받고 강의 시작하기
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -886,127 +885,38 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
   </div>
 </section>
 
-<!-- ══════════════ 서비스 카드 3종 ══════════════ -->
-<section class="tone" id="service">
+<!-- ══════════════ 현장 사진 ══════════════ -->
+<section id="onsite">
   <div class="wrap">
-    <p class="eyebrow reveal">Program</p>
-    <h2 class="title reveal">세 가지 축으로<br><em>성적을 설계합니다.</em></h2>
-    <p class="desc reveal">진단 없이 시작하는 수업은 그냥 과외입니다. 아래 세 가지가 맞물릴 때만 등급이 움직입니다.</p>
+    <p class="eyebrow reveal">On Site</p>
+    <h2 class="title reveal">말보다<br><em>현장을 보여드립니다.</em></h2>
+    <p class="desc reveal">스크롤하면 사진이 선명해집니다.</p>
 
-    <div class="cards">
+    <div class="gallery">
+      <!-- ★ 사진 교체: photo1.jpg / photo2.jpg / photo3.jpg 를 index.html 옆에 두세요 -->
+      <figure class="gal reveal">
+        <div class="gal-media" data-media>
+          <span class="gal-ph">강의 현장</span>
+          <img src="photo1.jpg" alt="미적분 개념 강의 현장" loading="lazy" onerror="this.remove()">
+        </div>
+        <figcaption><b>개념은 칠판에서 끝냅니다</b>함수의 극한부터 부정적분까지, 흐름을 한 판에 정리합니다.</figcaption>
+      </figure>
 
-      <!-- ───────── CARD 1 ───────── -->
-      <article class="card reveal">
-        <div class="card-media" data-media>
-          <span class="card-no">01</span>
-          <!-- ★ 사진 교체 방법: 아래 <svg>…</svg> 전체를 지우고
-               <img src="photo1.jpg" alt="수학 1:1 컨설팅"> 로 바꾸면 됩니다.
-               (스크롤 애니메이션은 그대로 적용됩니다) -->
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="1:1 수학 정밀 컨설팅">
-            <defs>
-              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#123b4d"/><stop offset="1" stop-color="#04141c"/></linearGradient>
-              <linearGradient id="g1b" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2fb0a0"/><stop offset="1" stop-color="#e6c184"/></linearGradient>
-            </defs>
-            <rect width="400" height="300" fill="url(#g1)"/>
-            <g stroke="#6fd3c4" stroke-opacity=".16" stroke-width="1"><path d="M0 75h400M0 150h400M0 225h400M100 0v300M200 0v300M300 0v300"/></g>
-            <path d="M20 265C90 265 110 60 200 60s110 205 180 205" fill="none" stroke="#2fb0a0" stroke-opacity=".22" stroke-width="17" stroke-linecap="round"/>
-            <path d="M20 265C90 265 110 60 200 60s110 205 180 205" fill="none" stroke="url(#g1b)" stroke-width="5" stroke-linecap="round"/>
-            <circle cx="200" cy="60" r="17" fill="#e6c184" fill-opacity=".2"/><circle cx="200" cy="60" r="9" fill="#e6c184"/>
-            <text x="30" y="48" fill="#e8f6f3" fill-opacity=".85" font-family="Georgia,serif" font-size="21">f(x) = ax² + bx + c</text>
-            <g fill="#e6c184" fill-opacity=".68" font-family="Georgia,serif" font-size="17"><text x="290" y="285">∫ dx</text><text x="34" y="122">lim</text></g>
-          </svg>
+      <figure class="gal reveal">
+        <div class="gal-media" data-media>
+          <span class="gal-ph">학습 설계</span>
+          <img src="photo2.jpg" alt="국영수 학습 설계" loading="lazy" onerror="this.remove()">
         </div>
-        <div class="card-body">
-          <h3>1:1 수학 정밀 컨설팅</h3>
-          <p>어디서 틀렸는지가 아니라 <b>왜 틀렸는지</b>를 찾습니다.</p>
-          <ul class="card-list">
-            <li>단원별 취약 개념 정밀 진단</li>
-            <li>오답 유형 분류 &amp; 맞춤 처방</li>
-            <li>내신 · 모의고사 이원화 대비</li>
-            <li>주간 리포트로 진도 추적</li>
-          </ul>
-          <a href="#contact" class="card-cta">진단 신청하기 <span>→</span></a>
-        </div>
-      </article>
+        <figcaption><b>국·영·수 시간을 나눕니다</b>수학 시간을 확보하려면 나머지 과목 루틴이 먼저 정리돼야 합니다.</figcaption>
+      </figure>
 
-      <!-- ───────── CARD 2 ───────── -->
-      <article class="card reveal">
-        <div class="card-media" data-media>
-          <span class="card-no">02</span>
-          <!-- ★ 사진 교체: <img src="photo2.jpg" alt="국영수 공부법"> -->
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="국영수 공부법 코칭">
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a2f10"/><stop offset="1" stop-color="#150c02"/></linearGradient></defs>
-            <rect width="400" height="300" fill="url(#g2)"/>
-            <circle cx="332" cy="58" r="72" fill="#f0a83c" fill-opacity=".17"/>
-            <rect x="52" y="196" width="286" height="26" rx="5" fill="#c0472f"/>
-            <rect x="52" y="196" width="286" height="8" rx="4" fill="#e0664a" fill-opacity=".65"/>
-            <rect x="66" y="166" width="258" height="30" rx="5" fill="#1f6f8b"/>
-            <rect x="66" y="166" width="258" height="9" rx="4" fill="#3d9cb8" fill-opacity=".65"/>
-            <rect x="80" y="134" width="230" height="32" rx="5" fill="#2f7a4f"/>
-            <rect x="80" y="134" width="230" height="9" rx="4" fill="#4aa872" fill-opacity=".65"/>
-            <g fill="#fdf6e6" fill-opacity=".92" font-family="Georgia,serif" font-size="15">
-              <text x="98" y="156">국 어</text><text x="86" y="188">영 어</text><text x="72" y="215">수 학</text>
-            </g>
-            <rect x="128" y="228" width="176" height="52" rx="6" fill="#f5ecd8"/>
-            <g stroke="#c3b291" stroke-width="1.6" stroke-linecap="round"><path d="M144 244h120M144 256h120M144 268h84"/></g>
-            <path d="M282 214l26 26-9 26-17-8z" fill="#e6c184"/>
-            <path d="M282 214l26 26-6 6-26-26z" fill="#c9a46a"/>
-            <circle cx="60" cy="70" r="30" fill="none" stroke="#e6c184" stroke-opacity=".5" stroke-width="2.5"/>
-            <path d="M60 52v20l13 8" fill="none" stroke="#e6c184" stroke-opacity=".8" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
+      <figure class="gal reveal">
+        <div class="gal-media" data-media>
+          <span class="gal-ph">실행 점검</span>
+          <img src="photo3.jpg" alt="자습 실행 점검" loading="lazy" onerror="this.remove()">
         </div>
-        <div class="card-body">
-          <h3>국·영·수 공부법 코칭</h3>
-          <p>국어는 구조 독해, 영어는 축적, 수학은 손. <b>과목별로 다른 루틴</b>을 잡습니다.</p>
-          <ul class="card-list">
-            <li>과목별 공부 순서 · 시간 배분</li>
-            <li>노트 정리 &amp; 오답노트 실전 양식</li>
-            <li>암기 주기와 복습 타이밍 설계</li>
-            <li>시험 4주 전 역산 플래너 작성</li>
-          </ul>
-          <a href="#contact" class="card-cta">공부법 상담하기 <span>→</span></a>
-        </div>
-      </article>
-
-      <!-- ───────── CARD 3 ───────── -->
-      <article class="card reveal">
-        <div class="card-media" data-media>
-          <span class="card-no">03</span>
-          <!-- ★ 사진 교체: <img src="photo3.jpg" alt="2~5등급 성적 향상"> -->
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2~5등급 성적 향상 트랙">
-            <defs>
-              <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15321f"/><stop offset="1" stop-color="#050d08"/></linearGradient>
-              <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2f7a4f"/><stop offset="1" stop-color="#e6c184"/></linearGradient>
-            </defs>
-            <rect width="400" height="300" fill="url(#g3)"/>
-            <g stroke="#7fd6a2" stroke-opacity=".13" stroke-width="1"><path d="M40 60h330M40 110h330M40 160h330M40 210h330M40 255h330"/></g>
-            <g fill="url(#bar)">
-              <rect x="66" y="196" width="42" height="59" rx="4" fill-opacity=".5"/>
-              <rect x="132" y="164" width="42" height="91" rx="4" fill-opacity=".68"/>
-              <rect x="198" y="118" width="42" height="137" rx="4" fill-opacity=".84"/>
-              <rect x="264" y="66" width="42" height="189" rx="4"/>
-            </g>
-            <path d="M87 186 153 152 219 106 285 56" fill="none" stroke="#e6c184" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 7"/>
-            <g fill="#e6c184"><circle cx="87" cy="186" r="5"/><circle cx="153" cy="152" r="5"/><circle cx="219" cy="106" r="5"/><circle cx="285" cy="56" r="7"/></g>
-            <path d="M285 38l7 12h-14z" fill="#e6c184"/>
-            <g fill="#d9f2e2" fill-opacity=".8" font-family="Georgia,serif" font-size="14" text-anchor="middle">
-              <text x="87" y="277">5등급</text><text x="153" y="277">4등급</text><text x="219" y="277">3등급</text><text x="285" y="277">2등급</text>
-            </g>
-          </svg>
-        </div>
-        <div class="card-body">
-          <h3>2~5등급 성적 향상 트랙</h3>
-          <p><b>버릴 문제와 잡을 문제</b>를 구분하는 것부터 시작합니다.</p>
-          <ul class="card-list">
-            <li>등급 구간별 목표 배점 설계</li>
-            <li>3점 · 쉬운 4점 우선 정복 전략</li>
-            <li>실수 줄이는 검산 루틴 훈련</li>
-            <li>월 단위 등급 시뮬레이션 점검</li>
-          </ul>
-          <a href="#contact" class="card-cta">내 등급 진단받기 <span>→</span></a>
-        </div>
-      </article>
-
+        <figcaption><b>계획은 실행까지가 끝입니다</b>하루치로 쪼갠 분량이 실제로 지켜지는지 주간으로 확인합니다.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
