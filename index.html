@@ -250,6 +250,9 @@ section{padding:clamp(78px,9.5vw,124px) 0;position:relative;z-index:1}
 }
 .fact b i{font-style:normal;font-size:.44em;font-family:var(--sans);font-weight:500;margin-left:3px}
 .fact b .pre{font-size:.38em;color:var(--ink-2);margin:0 6px 0 0;letter-spacing:-.02em}
+.fact b span{font-variant-numeric:tabular-nums lining-nums}
+.fact b.live i:last-child{animation:livePlus 2.6s ease-in-out infinite}
+@keyframes livePlus{0%,100%{opacity:1}50%{opacity:.3}}
 .fact > span{font-size:12.5px;color:var(--ink-3);letter-spacing:-.01em;display:block;margin-top:9px}
 
 
@@ -658,6 +661,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 }
 
 @media(prefers-reduced-motion:reduce){
+  .fact b.live i:last-child{animation:none}
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
   .gal-media{--p:1 !important}
@@ -1202,7 +1206,7 @@ footer b{color:rgba(255,255,255,.72);font-weight:500}
 
    비워두면 전화 안내 문구가 대신 표시됩니다.
    ═══════════════════════════════════════════════════════════ */
-const SHEET_ENDPOINT = '';
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzyXOnNtZnNxhruGUzRaFRmwxPkYGm_N-zUCDTB_tvSiy1U1BuFdlQdaxp2eEWa0Ewu/exec';
 const PHONE          = '010-2362-0437';
 
 (function(){
@@ -1263,23 +1267,48 @@ const PHONE          = '010-2362-0437';
   }, {threshold:.4});
   document.querySelectorAll('[data-step]').forEach(el => stepIO.observe(el));
 
-  /* ── 숫자 카운트업 ── */
+  /* ── 숫자 카운트업 · 천천히 오르다가 끝자리가 한 칸씩 올라감 ── */
+  const fmt = (v, dec) => v.toLocaleString('ko-KR', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+  function countUp(el){
+    const target = parseFloat(el.dataset.count);
+    const dec = parseInt(el.dataset.dec || '0', 10);
+    const box = el.closest('b');
+    const finish = () => { el.textContent = fmt(target, dec); if (box) box.classList.add('live'); };
+    if (reduce) { finish(); return; }
+
+    // 1단계 (3초): 목표의 약 97%까지 부드럽게
+    const tail = dec ? 0 : Math.min(target, Math.max(6, Math.round(target * 0.03)));
+    const base = target - tail;
+    const dur1 = 3000, t0 = performance.now();
+
+    // 2단계 (약 4초): 끝자리가 한 칸씩, 끝으로 갈수록 느리게 → 지금도 오르는 느낌
+    const creep = () => {
+      if (!tail) { finish(); return; }
+      let v = base;
+      const gap = 4200 / tail;
+      const step = () => {
+        v += 1;
+        el.textContent = fmt(v, 0);
+        if (v < target) setTimeout(step, gap * (0.5 + (v - base) / tail));
+        else finish();
+      };
+      setTimeout(step, gap * 0.5);
+    };
+
+    const ease = now => {
+      const t = Math.min(1, (now - t0) / dur1);
+      const k = 1 - Math.pow(1 - t, 3);
+      el.textContent = fmt(dec ? base * k : Math.round(base * k), dec);
+      if (t < 1) requestAnimationFrame(ease);
+      else creep();
+    };
+    requestAnimationFrame(ease);
+  }
   const countIO = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (!en.isIntersecting) return;
-      const el = en.target;
-      countIO.unobserve(el);
-      const target = parseFloat(el.dataset.count);
-      const dec = parseInt(el.dataset.dec || '0', 10);
-      if (reduce) { el.textContent = target.toLocaleString('ko-KR', {minimumFractionDigits:dec, maximumFractionDigits:dec}); return; }
-      const dur = 1500, t0 = performance.now();
-      const tick = now => {
-        const t = Math.min(1, (now - t0) / dur);
-        const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = (target * eased).toLocaleString('ko-KR', {minimumFractionDigits:dec, maximumFractionDigits:dec});
-        if (t < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
+      countIO.unobserve(en.target);
+      countUp(en.target);
     });
   }, {threshold:.6});
   document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
