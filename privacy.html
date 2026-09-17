@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title>개인정보처리방침 | CRESSO</title>
+<meta name="description" content="CRESSO 홈페이지 상담 신청에서 받는 개인정보의 항목, 목적, 보관 기간과 처리 방법을 안내합니다.">
+<meta name="theme-color" content="#0b0e13">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0e13'/%3E%3Cpath d='M45 19.5a17 17 0 1 0 0 25' fill='none' stroke='%23d5dde7' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='19.5' r='3.4' fill='%239fc2ea'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Orbit&display=swap">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --canvas:#0b0e13;
+  --panel:#121821;
+  --line:rgba(170,188,210,.12);
+  --line-strong:rgba(176,196,220,.5);
+  --accent:#9fc2ea;
+  --accent-ink:#08111d;
+  --silver:#cfd7e1;
+  --text-primary:#e9edf2;
+  --text-secondary:#9ba7b5;
+  --text-dim:#7e8a99;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --f-kr:'Orbit','Pretendard Variable',Pretendard,sans-serif;
+  --f-body:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,'Pretendard Variable',Pretendard,monospace;
+  --gut:clamp(16px,4.6vw,80px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:92px}
+body{margin:0;min-height:100vh;background:var(--canvas);background-image:radial-gradient(70vmax 70vmax at 80% -10%,rgba(120,160,210,.09),rgba(120,160,210,0) 70%);background-repeat:no-repeat;color:var(--text-primary);font-family:var(--f-body);font-size:16px;font-weight:450;line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;left:16px;top:-60px;z-index:100;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:999px;font-weight:600;text-decoration:none;transition:top .3s var(--ease-out)}
+.skip:focus{top:16px}
+
+/* header */
+.nav{position:sticky;top:0;z-index:50;height:76px;display:flex;align-items:center;gap:12px;padding:0 var(--gut);background:rgba(11,14,19,.92);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;min-height:44px;text-decoration:none}
+.brand img{width:34px;height:auto}
+.wordmark{width:92px;height:15px;overflow:visible;color:var(--silver)}
+.home{margin-left:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line-strong);font-size:14px;font-weight:600;text-decoration:none;transition:border-color .3s var(--ease-out)}
+.home svg{width:14px;height:14px;transform:rotate(-135deg)}
+
+/* document */
+main{max-width:860px;margin:0 auto;padding:64px var(--gut) 96px}
+.label{margin:0 0 18px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary)}
+.label b{color:var(--accent);font-weight:500;margin-right:10px}
+h1{margin:0;font-family:var(--f-kr);font-weight:400;font-size:clamp(30px,4vw,44px);line-height:1.3;letter-spacing:-.02em;word-spacing:-.24em;-webkit-text-stroke:.35px currentColor}
+.lede{margin:18px 0 0;color:var(--text-secondary);font-size:clamp(16px,1.3vw,17px)}
+.glance{margin:40px 0 0;padding:26px 28px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+.glance dl{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px}
+.glance h2{margin:0 0 16px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--accent)}
+.glance div{margin:0}
+.glance dt{font-size:13px;color:var(--text-dim)}
+.glance dd{margin:2px 0 0;font-weight:600;color:var(--text-primary)}
+.toc{margin:40px 0 0;padding:0;list-style:none;counter-reset:toc;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;border-top:1px solid var(--line)}
+.toc li{counter-increment:toc;border-bottom:1px solid var(--line)}
+.toc a{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 0;font-size:15px;color:var(--text-secondary);text-decoration:none;transition:color .3s var(--ease-out)}
+.toc a::before{content:counter(toc,decimal-leading-zero);flex:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--text-dim)}
+section{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+section h2{display:flex;align-items:baseline;gap:14px;margin:0 0 16px;font-size:clamp(19px,2vw,22px);font-weight:650;line-height:1.45;letter-spacing:-.01em}
+section h2 span{flex:none;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--accent)}
+section p{margin:0 0 12px;color:var(--text-secondary)}
+section ul{margin:0 0 12px;padding-left:1.1em;color:var(--text-secondary)}
+section li{margin:4px 0}
+section li::marker{color:var(--accent)}
+strong{color:var(--text-primary);font-weight:600}
+.table{margin:6px 0 12px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.table div{display:grid;grid-template-columns:150px minmax(0,1fr);border-top:1px solid var(--line)}
+.table div:first-child{border-top:0}
+.table dt{padding:12px 16px;font-size:14px;color:var(--text-dim);background:rgba(255,255,255,.02)}
+.table dd{margin:0;padding:12px 16px;color:var(--text-primary)}
+section a,.lede a{color:var(--text-primary);text-decoration:underline;text-decoration-color:rgba(207,215,225,.35);text-underline-offset:3px}
+.help{margin:6px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.help li{margin:0;padding:14px 16px;border:1px solid var(--line);border-radius:14px;color:var(--text-primary)}
+.help small{display:block;color:var(--text-dim);font-size:13px}
+.nw{white-space:nowrap}
+.date{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--text-dim)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px var(--gut) 36px;background:rgba(9,12,16,.8)}
+footer .in{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--text-dim)}
+footer a{text-decoration:none;font-family:var(--f-body);letter-spacing:.02em;color:var(--text-secondary)}
+
+@media (hover:hover) and (pointer:fine){
+  .home:hover{border-color:var(--silver)}
+  .toc a:hover{color:var(--text-primary)}
+  footer a:hover{color:var(--silver)}
+}
+@media (pointer:coarse){
+  section a,.lede a{display:inline-block;padding:10px 0;margin:-10px 0}
+  footer a{display:inline-flex;align-items:center;min-height:44px}
+}
+@media (max-width:640px){
+  main{padding-top:44px}
+  .glance{padding:22px 20px}.glance dl{grid-template-columns:1fr}
+  .toc{grid-template-columns:1fr}
+  .table div{grid-template-columns:1fr}
+  .table dt{padding:10px 16px 0;background:none}
+  .table dd{padding:2px 16px 12px}
+  .help{grid-template-columns:1fr}
+}
+@media (max-width:360px){.wordmark{width:76px}.home{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+  body{background:#fff;color:#000}
+  .nav,.toc,footer,.skip{display:none}
+  section p,section ul,.lede,.table dd,.glance dd,.help li{color:#000}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="wm" viewBox="-2 -2 270 44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M34.55 7.78A19 19 0 1 0 34.55 32.22"/>
+      <path d="M52 40V1H66A10 10 0 0 1 66 21H52M62 21L76 40"/>
+      <path d="M92 1H118M95 20H118M92 39H118"/>
+      <path d="M164 1H144A9.5 9.5 0 0 0 144 20H154A9.5 9.5 0 0 1 154 39H134"/>
+      <path d="M210 1H190A9.5 9.5 0 0 0 190 20H200A9.5 9.5 0 0 1 200 39H180"/>
+      <circle cx="246" cy="20" r="19"/>
+    </symbol>
+    <symbol id="arrow" viewBox="0 0 16 16"><path d="M4 12L12 4M5.5 4H12V10.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="CRESSO 홈으로">
+    <img src="assets/cresso-mark.webp" alt="" width="34" height="33">
+    <svg class="wordmark" viewBox="-2 -2 270 44" aria-hidden="true"><use href="#wm"/></svg>
+  </a>
+  <a class="home" href="index.html"><svg aria-hidden="true"><use href="#arrow"/></svg>홈으로</a>
+</header>
+
+<main id="main">
+  <p class="label"><b>+</b>Privacy</p>
+  <h1>개인정보처리방침</h1>
+  <p class="lede">CRESSO는 「개인정보 보호법」에 따라 홈페이지 상담 신청에서 받은 개인정보를 안전하게 다루고, 관련 문의를 빠르게 처리하기 위해 이 방침을 공개합니다.</p>
+
+  <div class="glance">
+    <h2>한눈에 보기</h2>
+    <dl>
+    <div><dt>받는 정보</dt><dd>상호명, 연락처 (필수)<br>업종, 관심 요금제, 문의 내용 (선택)</dd></div>
+    <div><dt>쓰는 곳</dt><dd>상담 연락과 견적 안내</dd></div>
+    <div><dt>보관 기간</dt><dd>상담 종료 후 1년, 이후 삭제</dd></div>
+    <div><dt>저장 위치</dt><dd>Google 스프레드시트</dd></div>
+    </dl>
+  </div>
+
+  <nav aria-label="목차">
+    <ol class="toc">
+      <li><a href="#p1">처리하는 개인정보 항목</a></li>
+      <li><a href="#p2">처리 목적</a></li>
+      <li><a href="#p3">보유 및 이용 기간</a></li>
+      <li><a href="#p4">파기 절차와 방법</a></li>
+      <li><a href="#p5">제3자 제공</a></li>
+      <li><a href="#p6">처리 위탁 및 국외 이전</a></li>
+      <li><a href="#p7">정보주체의 권리와 행사 방법</a></li>
+      <li><a href="#p8">안전성 확보 조치</a></li>
+      <li><a href="#p9">자동 수집 장치</a></li>
+      <li><a href="#p10">개인정보 보호책임자</a></li>
+      <li><a href="#p11">권익 침해 구제 방법</a></li>
+      <li><a href="#p12">방침의 변경</a></li>
+    </ol>
+  </nav>
+
+  <section id="p1">
+    <h2><span>01</span>처리하는 개인정보 항목</h2>
+    <p>홈페이지의 상담 신청 폼에서 아래 정보를 받습니다.</p>
+    <ul>
+      <li><strong>필수</strong>: 상호명, 연락처, 개인정보 수집·이용 동의 여부</li>
+      <li><strong>선택</strong>: 업종, 관심 요금제, 문의 내용</li>
+    </ul>
+    <p>상담 신청은 가게를 운영하는 사업자를 위한 것이므로 만 14세 미만 아동의 개인정보는 받지 않습니다.</p>
+  </section>
+
+  <section id="p2">
+    <h2><span>02</span>처리 목적</h2>
+    <p>받은 정보는 상담 신청 확인, 상담 연락, 견적 안내에만 사용합니다. 이 목적 밖으로는 쓰지 않으며, 목적이 바뀌면 미리 동의를 받습니다.</p>
+  </section>
+
+  <section id="p3">
+    <h2><span>03</span>보유 및 이용 기간</h2>
+    <p><strong>상담이 끝난 날로부터 1년</strong> 동안 보관하고, 기간이 지나면 바로 삭제합니다. 다만 다른 법령에서 보관을 요구하는 경우에는 그 기간 동안 보관합니다.</p>
+  </section>
+
+  <section id="p4">
+    <h2><span>04</span>파기 절차와 방법</h2>
+    <ul>
+      <li>보관 기간이 끝났거나 처리 목적을 이룬 정보는 지체 없이 파기합니다.</li>
+      <li>전자 파일(Google 스프레드시트의 해당 줄, 신청 알림 메일)은 되살릴 수 없도록 휴지통까지 비워 삭제합니다.</li>
+      <li>종이에 적은 정보가 있다면 분쇄하거나 태워서 없앱니다.</li>
+    </ul>
+  </section>
+
+  <section id="p5">
+    <h2><span>05</span>제3자 제공</h2>
+    <p>CRESSO는 받은 개인정보를 다른 곳에 제공하지 않습니다. 법령에 특별한 규정이 있는 경우만 예외입니다.</p>
+  </section>
+
+  <section id="p6">
+    <h2><span>06</span>처리 위탁 및 국외 이전</h2>
+    <p>상담 신청 내용을 보관하고 신청 알림을 받기 위해 Google의 서비스를 사용합니다. 이 과정에서 정보가 해외 서버에 저장될 수 있습니다.</p>
+    <dl class="table">
+      <div><dt>이전받는 곳</dt><dd>Google LLC (문의: <a href="https://support.google.com" rel="noopener">support.google.com</a>)</dd></div>
+      <div><dt>이전되는 국가</dt><dd>미국 등 Google 데이터 센터가 있는 국가</dd></div>
+      <div><dt>이전 항목</dt><dd>상담 신청 폼에 입력한 모든 항목</dd></div>
+      <div><dt>이전 시기와 방법</dt><dd>상담을 신청하는 순간, 암호화된 인터넷 연결(HTTPS)로 전송</dd></div>
+      <div><dt>이용 목적</dt><dd>신청 내용 보관(Google 스프레드시트), 신청 알림(Gmail)</dd></div>
+      <div><dt>보유 기간</dt><dd>03번의 보유 기간과 같음</dd></div>
+    </dl>
+    <p>이전을 원하지 않으시면 폼 대신 전화 <span class="nw"><a href="tel:+821023620437">010-2362-0437</a>로</span> 상담을 신청하실 수 있습니다. 이 경우 폼을 통한 신청은 받을 수 없습니다.</p>
+  </section>
+
+  <section id="p7">
+    <h2><span>07</span>정보주체의 권리와 행사 방법</h2>
+    <p>언제든지 내 정보의 <strong>열람, 정정, 삭제, 처리 정지</strong>를 요청하실 수 있습니다.</p>
+    <ul>
+      <li>아래 10번의 이메일이나 전화로 요청하시면 지체 없이 처리합니다.</li>
+      <li>법정대리인이나 위임을 받은 분을 통해서도 요청하실 수 있습니다.</li>
+      <li>법령에서 보관을 요구하는 정보는 삭제를 요청하셔도 그 기간 동안 보관될 수 있습니다.</li>
+    </ul>
+  </section>
+
+  <section id="p8">
+    <h2><span>08</span>안전성 확보 조치</h2>
+    <ul>
+      <li>개인정보를 다루는 사람을 최소한으로 줄이고, 신청 목록은 CRESSO 계정에서만 볼 수 있게 관리합니다.</li>
+      <li>신청 내용은 암호화된 연결(HTTPS)로만 전송됩니다.</li>
+      <li>계정 비밀번호를 안전하게 관리하고, 보관 기간이 지난 정보는 바로 삭제합니다.</li>
+    </ul>
+  </section>
+
+  <section id="p9">
+    <h2><span>09</span>자동 수집 장치</h2>
+    <p>이 홈페이지는 쿠키를 사용하지 않고, 방문 분석 도구도 쓰지 않습니다.</p>
+  </section>
+
+  <section id="p10">
+    <h2><span>10</span>개인정보 보호책임자</h2>
+    <p>개인정보에 관한 문의, 불만, 피해 구제는 아래로 연락 주세요.</p>
+    <dl class="table">
+      <div><dt>책임자</dt><dd>대표 심유신</dd></div>
+      <div><dt>이메일</dt><dd><a href="mailto:cresso04037@gmail.com">cresso04037@gmail.com</a></dd></div>
+      <div><dt>전화</dt><dd><a href="tel:+821023620437">010-2362-0437</a></dd></div>
+    </dl>
+  </section>
+
+  <section id="p11">
+    <h2><span>11</span>권익 침해 구제 방법</h2>
+    <p>개인정보 침해에 대한 상담이나 신고가 필요하시면 아래 기관에 문의하실 수 있습니다.</p>
+    <ul class="help">
+      <li>개인정보분쟁조정위원회<small>1833-6972 · kopico.go.kr</small></li>
+      <li>개인정보침해신고센터<small>(국번 없이) 118 · privacy.kisa.or.kr</small></li>
+      <li>대검찰청<small>(국번 없이) 1301 · spo.go.kr</small></li>
+      <li>경찰청<small>(국번 없이) 182 · ecrm.police.go.kr</small></li>
+    </ul>
+  </section>
+
+  <section id="p12">
+    <h2><span>12</span>방침의 변경</h2>
+    <p>이 방침의 내용이 바뀌면 시행 전에 홈페이지를 통해 알려 드립니다.</p>
+  </section>
+
+  <!-- DEPLOY STEP: 시행일을 실제 공개일로 바꾼다 -->
+  <p class="date">시행일: 2026년 9월 17일</p>
+</main>
+
+<footer>
+  <div class="in">
+    <span>© 2026 CRESSO. All rights reserved.</span>
+    <a href="index.html">CRESSO 홈으로</a>
+  </div>
+</footer>
+</body>
+</html>
