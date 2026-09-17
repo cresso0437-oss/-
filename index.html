@@ -136,7 +136,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 /* ---------- hero ---------- */
 main{position:relative;z-index:1}
-.hero{position:relative;height:500vh}
+.hero{position:relative;height:320vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--canvas)}
 .poster,.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .poster{background-position:center;background-size:cover;background-repeat:no-repeat}
@@ -208,13 +208,13 @@ main{position:relative;z-index:1}
     }
   }
 }
-/* the portrait phone scrub: one caption column pinned under the nav, the network and floor below it */
+/* the portrait phone scrub: one caption column at the left middle, a darker band behind it, the network and floor below it */
 @media (max-width: 540px) and (prefers-reduced-motion: no-preference){
-  .hero{height:580vh}
+  .hero{height:380vh}
   .stage{height:100vh;height:100lvh}
-  .band,.b1,.b2,.b3,.b4{left:20px;right:20px;width:auto;top:calc(76px + 3svh);transform:none}
-  .band::before{inset:-44px -20px;background:radial-gradient(ellipse 95% 75% at 35% 45%,rgba(5,6,10,var(--sa,.7)) 0%,rgba(5,6,10,calc(var(--sa,.7) * .7)) 50%,rgba(5,6,10,0) 88%)}
-  .scrim{background:linear-gradient(180deg,rgba(8,10,14,.76) 0,rgba(8,10,14,.66) 330px,rgba(8,10,14,.22) 470px,rgba(8,10,14,0) 560px,rgba(8,10,14,0) 90%,rgba(11,14,19,.45) 100%)}
+  .band,.b1,.b2,.b3,.b4{left:20px;right:20px;width:auto;top:48svh;transform:translateY(-50%)}
+  .band::before{inset:-44px -20px;background:radial-gradient(ellipse 95% 62% at 35% 50%,rgba(5,6,10,var(--sa,.7)) 0%,rgba(5,6,10,calc(var(--sa,.7) * .7)) 45%,rgba(5,6,10,0) 78%)}
+  .scrim{background:linear-gradient(180deg,rgba(8,10,14,.6) 0,rgba(8,10,14,.66) 20%,rgba(8,10,14,.74) 32%,rgba(8,10,14,.74) 64%,rgba(8,10,14,.3) 77%,rgba(8,10,14,0) 87%,rgba(11,14,19,.45) 100%)}
   .hud{display:none}
   .cue{bottom:calc(100lvh - 100svh + 28px)}
   .split .c{will-change:auto}
@@ -1058,14 +1058,14 @@ footer .copy .pp{font-weight:700;color:var(--text-primary)}
         </ul>
       </div>
       <div class="plans rv" style="--i:1">
-        <div class="plan-tabs" role="tablist" aria-label="요금제">
-          <button type="button" role="tab" id="tab-std" aria-selected="true" aria-controls="plan-std">STANDARD</button>
-          <button type="button" role="tab" id="tab-dlx" aria-selected="false" aria-controls="plan-dlx" tabindex="-1">DELUXE</button>
+        <div class="plan-tabs" role="tablist" aria-label="요금제" style="--ti:1">
+          <button type="button" role="tab" id="tab-std" aria-selected="false" aria-controls="plan-std" tabindex="-1">STANDARD</button>
+          <button type="button" role="tab" id="tab-dlx" aria-selected="true" aria-controls="plan-dlx">DELUXE</button>
           <button type="button" role="tab" id="tab-prm" aria-selected="false" aria-controls="plan-prm" tabindex="-1">PREMIUM</button>
           <span class="tab-ink" aria-hidden="true"></span>
         </div>
         <div class="plan-panels">
-          <div class="plan on" id="plan-std" role="tabpanel" aria-labelledby="tab-std" tabindex="0">
+          <div class="plan" id="plan-std" role="tabpanel" aria-labelledby="tab-std" tabindex="0">
             <p class="plan-tag"><span>OPEN 30%</span>오픈 기념 할인가</p>
             <p class="plan-price"><s><span class="sr">정가 </span>360,000원</s><strong><span class="sr">할인가 </span>252,000원</strong><small>VAT 포함</small></p>
             <div>
@@ -1082,7 +1082,7 @@ footer .copy .pp{font-weight:700;color:var(--text-primary)}
             </ul>
             <a class="btn btn-accent plan-cta" href="#form" data-plan="STANDARD">STANDARD로 상담하기<svg aria-hidden="true"><use href="#arrow"/></svg></a>
           </div>
-          <div class="plan" id="plan-dlx" role="tabpanel" aria-labelledby="tab-dlx" tabindex="0">
+          <div class="plan on" id="plan-dlx" role="tabpanel" aria-labelledby="tab-dlx" tabindex="0">
             <p class="plan-tag"><span>OPEN 30%</span>오픈 기념 할인가</p>
             <p class="plan-price"><s><span class="sr">정가 </span>590,000원</s><strong><span class="sr">할인가 </span>413,000원</strong><small>VAT 포함</small></p>
             <div>
@@ -1724,7 +1724,7 @@ footer .copy .pp{font-weight:700;color:var(--text-primary)}
   const tabBar = $('.plan-tabs');
   const panelsEl = $('.plan-panels');
   const fPlan = $('#f-plan');
-  let planIdx = 0;
+  let planIdx = 1; // DELUXE opens first
   $$('.plan').forEach(pl => $$('.plan-list li', pl).forEach((li, n) => li.style.setProperty('--n', n)));
   function selectPlan(i, focus) {
     i = (i + tabs.length) % tabs.length;
